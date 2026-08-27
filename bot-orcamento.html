@@ -1,345 +1,1103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Confiancce - Solicitar Orçamento</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #F2F2F2; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
-        .modal-container { background: white; border-radius: 16px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.2); position: relative; }
-        .modal-header { background: #2D5016; padding: 30px 20px; color: white; text-align: center; position: sticky; top: 0; z-index: 10; }
-        .modal-header h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-        .modal-header p { font-size: 13px; font-weight: 400; opacity: 0.95; }
-        .close-btn { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.3); border: none; color: white; font-size: 28px; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease; }
-        .close-btn:hover { background: rgba(255,255,255,0.5); }
-        .modal-content { padding: 30px 20px; }
-        .question-block { display: none; animation: slideIn 0.3s ease; }
-        .question-block.active { display: block; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .question-title { font-size: 16px; font-weight: 400; color: #45434D; margin-bottom: 20px; line-height: 1.4; }
-        .input-field { width: 100%; padding: 12px 15px; border: 2px solid #E0E0E0; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 14px; transition: all 0.3s ease; margin-bottom: 15px; }
-        .input-field:focus { outline: none; border-color: #FF914D; background: #FFF8F5; }
-        .options-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
-        .option-btn { padding: 14px 16px; border: 2px solid #E0E0E0; border-radius: 8px; background: white; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; color: #45434D; cursor: pointer; transition: all 0.3s ease; text-align: left; }
-        .option-btn:hover { border-color: #FF914D; background: #FFF8F5; }
-        .option-btn.selected { background: #FF914D; color: white; border-color: #FF914D; }
-        .sub-options { display: none; flex-direction: column; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E0E0E0; }
-        .sub-options.active { display: flex; }
-        .sub-option-btn { padding: 12px 14px; border: 2px solid #E0E0E0; border-radius: 6px; background: white; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 400; color: #45434D; cursor: pointer; transition: all 0.3s ease; text-align: left; margin-left: 10px; }
-        .sub-option-btn:hover { border-color: #FF914D; background: #FFF8F5; }
-        .sub-option-btn.selected { background: #FF914D; color: white; border-color: #FF914D; }
-        .checkbox-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
-        .checkbox-item { display: flex; align-items: center; padding: 12px; border: 2px solid #E0E0E0; border-radius: 8px; background: white; cursor: pointer; transition: all 0.3s ease; }
-        .checkbox-item:hover { border-color: #FF914D; background: #FFF8F5; }
-        .checkbox-item input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; margin-right: 12px; accent-color: #FF914D; }
-        .checkbox-item label { cursor: pointer; font-size: 14px; font-weight: 500; color: #45434D; flex: 1; }
-        .button-group { display: flex; gap: 10px; margin-top: 25px; }
-        .btn-secondary { flex: 1; padding: 12px; border: none; background: #2D5016; color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
-        .btn-secondary:hover { background: #1f3d10; }
-        .btn-primary { flex: 1; padding: 12px; background: #FF914D; color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
-        .btn-primary:hover { background: #E67E3C; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,145,77,0.3); }
-        .progress-bar { width: 100%; height: 4px; background: #E0E0E0; border-radius: 2px; margin-bottom: 25px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #057EE6 0%, #FF914D 100%); border-radius: 2px; transition: width 0.3s ease; }
-        .confirmation-box { background: #FFF8F5; border: 2px solid #FF914D; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .confirmation-item { display: flex; justify-content: space-between; padding: 10px 0; font-size: 13px; color: #45434D; border-bottom: 1px solid #FFE5D1; }
-        .confirmation-item:last-child { border-bottom: none; }
-        .confirmation-item strong { font-weight: 700; color: #FF914D; }
-        @media (max-width: 768px) {
-          .confirmation-item { display: flex; flex-direction: column; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        padding: 20px;
+      }
+      .modal-container {
+        background: white;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+      .modal-header {
+        background: #2d5016;
+        padding: 30px 20px;
+        color: white;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .modal-header h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .modal-header p {
+        font-size: 13px;
+        font-weight: 400;
+        opacity: 0.95;
+      }
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+      .close-btn:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .modal-content {
+        padding: 30px 20px;
+      }
+      .question-block {
+        display: none;
+        animation: slideIn 0.3s ease;
+      }
+      .question-block.active {
+        display: block;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
         }
-        .success-message { text-align: center; padding: 30px 20px; }
-        .success-icon { font-size: 60px; margin-bottom: 15px; }
-        .success-message h3 { font-size: 20px; font-weight: 700; color: #057EE6; margin-bottom: 10px; }
-        .success-message p { font-size: 14px; color: #45434D; line-height: 1.6; }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .question-title {
+        font-size: 16px;
+        font-weight: 400;
+        color: #45434d;
+        margin-bottom: 20px;
+        line-height: 1.4;
+      }
+      .input-field {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        margin-bottom: 15px;
+      }
+      .input-field:focus {
+        outline: none;
+        border-color: #ff914d;
+        background: #fff8f5;
+      }
+      .options-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .option-btn {
+        padding: 14px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: white;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        color: #45434d;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+      }
+      .option-btn:hover {
+        border-color: #ff914d;
+        background: #fff8f5;
+      }
+      .option-btn.selected {
+        background: #ff914d;
+        color: white;
+        border-color: #ff914d;
+      }
+      .sub-options {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #e0e0e0;
+      }
+      .sub-options.active {
+        display: flex;
+      }
+      .sub-option-btn {
+        padding: 12px 14px;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        background: white;
+        font-family: "Montserrat", sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: #45434d;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+        margin-left: 10px;
+      }
+      .sub-option-btn:hover {
+        border-color: #ff914d;
+        background: #fff8f5;
+      }
+      .sub-option-btn.selected {
+        background: #ff914d;
+        color: white;
+        border-color: #ff914d;
+      }
+      .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .checkbox-item:hover {
+        border-color: #ff914d;
+        background: #fff8f5;
+      }
+      .checkbox-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        margin-right: 12px;
+        accent-color: #ff914d;
+      }
+      .checkbox-item label {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: #45434d;
+        flex: 1;
+      }
+      .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 25px;
+      }
+      .btn-secondary {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        background: #2d5016;
+        color: white;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .btn-secondary:hover {
+        background: #1f3d10;
+      }
+      .btn-primary {
+        flex: 1;
+        padding: 12px;
+        background: #ff914d;
+        color: white;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: #e67e3c;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+      }
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: #e0e0e0;
+        border-radius: 2px;
+        margin-bottom: 25px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #057ee6 0%, #ff914d 100%);
+        border-radius: 2px;
+        transition: width 0.3s ease;
+      }
+      .confirmation-box {
+        background: #fff8f5;
+        border: 2px solid #ff914d;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .confirmation-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-size: 13px;
+        color: #45434d;
+        border-bottom: 1px solid #ffe5d1;
+      }
+      .confirmation-item:last-child {
+        border-bottom: none;
+      }
+      .confirmation-item strong {
+        font-weight: 700;
+        color: #ff914d;
+      }
+      @media (max-width: 768px) {
+        .confirmation-item {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      .success-message {
+        text-align: center;
+        padding: 30px 20px;
+      }
+      .success-icon {
+        font-size: 60px;
+        margin-bottom: 15px;
+      }
+      .success-message h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #057ee6;
+        margin-bottom: 10px;
+      }
+      .success-message p {
+        font-size: 14px;
+        color: #45434d;
+        line-height: 1.6;
+      }
     </style>
-</head>
-<body>
-<div class="modal-overlay">
-    <div class="modal-container">
+  </head>
+  <body>
+    <div class="modal-overlay">
+      <div class="modal-container">
         <div class="modal-header">
-            <button class="close-btn" onclick="fecharModal()">✕</button>
-            <h2>🏠 Leandro da Confiancce</h2>
-            <p>Solicitar Orçamento</p>
+          <button class="close-btn" onclick="fecharModal()">✕</button>
+          <h2>🏠 Leandro da Confiancce</h2>
+          <p>Solicitar Orçamento</p>
         </div>
         <div class="modal-content">
-            <div class="progress-bar" style="display: none;"><div class="progress-fill" id="progressBar"></div></div>
+          <div class="progress-bar" style="display: none">
+            <div class="progress-fill" id="progressBar"></div>
+          </div>
 
-            <div class="question-block active" id="q1">
-                <div class="question-title">Olá, aqui é o <strong>Leandro, das Casas Confiancce.</strong> Em alguns minutos, vou te atender pelo WhatsApp.<br><br>Mas antes me diga, por favor:<br><br><strong>Qual é o seu nome?</strong></div>
-                <input type="text" class="input-field" id="nome" placeholder="Digite seu nome" onkeypress="verificarEnter(event, 'q1')">
-                <div class="button-group"><button class="btn-primary" onclick="proximaPergunta('q1', 'q2')">Continuar →</button></div>
+          <div class="question-block active" id="q1">
+            <div class="question-title">
+              Olá, aqui é o <strong>Leandro, das Casas Confiancce.</strong> Em
+              alguns minutos, vou te atender pelo WhatsApp.<br /><br />Mas antes
+              me diga, por favor:<br /><br /><strong>Qual é o seu nome?</strong>
             </div>
+            <input
+              type="text"
+              class="input-field"
+              id="nome"
+              placeholder="Digite seu nome"
+              onkeypress="verificarEnter(event, 'q1')"
+            />
+            <div class="button-group">
+              <button class="btn-primary" onclick="proximaPergunta('q1', 'q2')">
+                Continuar →
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="q2">
-                <div class="question-title">Ótimo, <span id="nomeDisplay"></span>! 👍<br><br>Você já tem terreno onde vai construir?</div>
-                <div class="options-group">
-                    <button class="option-btn" onclick="selecionarTerreno('Com terreno', 'q2', 'q3')">✅ Sim, já tenho</button>
-                    <button class="option-btn" onclick="selecionarTerreno('Sem terreno', 'q2', 'q3')">❌ Não, ainda estou procurando</button>
-                    <button class="option-btn" onclick="selecionarTerreno('Não sabe', 'q2', 'q3')">🤔 Ainda não sei</button>
-                </div>
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q2', 'q1')">← Voltar</button></div>
+          <div class="question-block" id="q2">
+            <div class="question-title">
+              Ótimo, <span id="nomeDisplay"></span>! 👍<br /><br />Você já tem
+              terreno onde vai construir?
             </div>
+            <div class="options-group">
+              <button
+                class="option-btn"
+                onclick="selecionarTerreno('Com terreno', 'q2', 'q3')"
+              >
+                ✅ Sim, já tenho
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarTerreno('Sem terreno', 'q2', 'q3')"
+              >
+                ❌ Não, ainda estou procurando
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarTerreno('Não sabe', 'q2', 'q3')"
+              >
+                🤔 Ainda não sei
+              </button>
+            </div>
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('q2', 'q1')"
+              >
+                ← Voltar
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="q3">
-                <div class="question-title">Em qual estado você está?</div>
-                <div class="options-group">
-                    <button class="option-btn" onclick="selecionarEstadoComInput('Rio Grande do Sul', 'q3')">🏠 Rio Grande do Sul</button>
-                    <button class="option-btn" onclick="selecionarEstadoComInput('Santa Catarina', 'q3')">🏠 Santa Catarina</button>
-                </div>
-                <div id="city-input-container-q3" style="display: none; margin-top: 20px;">
-                  <input type="text" id="city-input-q3" placeholder="Digite sua cidade..." style="width: 100%; padding: 12px 15px; border: 2px solid #E0E0E0; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 14px; transition: all 0.3s ease; box-sizing: border-box; margin-bottom: 15px;" onkeypress="verificarEnter(event, 'q3')">
-                  <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q3', 'q2')">← Voltar</button><button class="btn-primary" onclick="proximaPergunta('q3', 'q4')">Continuar →</button></div>
-                </div>
+          <div class="question-block" id="q3">
+            <div class="question-title">Em qual estado você está?</div>
+            <div class="options-group">
+              <button
+                class="option-btn"
+                onclick="selecionarEstadoComInput('Rio Grande do Sul', 'q3')"
+              >
+                🏠 Rio Grande do Sul
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarEstadoComInput('Santa Catarina', 'q3')"
+              >
+                🏠 Santa Catarina
+              </button>
             </div>
+            <div
+              id="city-input-container-q3"
+              style="display: none; margin-top: 20px"
+            >
+              <input
+                type="text"
+                id="city-input-q3"
+                placeholder="Digite sua cidade..."
+                style="
+                  width: 100%;
+                  padding: 12px 15px;
+                  border: 2px solid #e0e0e0;
+                  border-radius: 8px;
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                  font-size: 14px;
+                  transition: all 0.3s ease;
+                  box-sizing: border-box;
+                  margin-bottom: 15px;
+                "
+                onkeypress="verificarEnter(event, 'q3')"
+              />
+              <div class="button-group">
+                <button
+                  class="btn-secondary"
+                  onclick="voltarPergunta('q3', 'q2')"
+                >
+                  ← Voltar</button
+                ><button
+                  class="btn-primary"
+                  onclick="proximaPergunta('q3', 'q4')"
+                >
+                  Continuar →
+                </button>
+              </div>
+            </div>
+          </div>
 
-            <div class="question-block" id="q4">
-                <div class="question-title">Quantas pessoas vão morar na casa?</div>
-                <div class="options-group">
-                    <button class="option-btn" onclick="selecionarOpcao('1-2 pessoas', 'q4', 'q5')">👨‍👩‍👧 1-2 pessoas</button>
-                    <button class="option-btn" onclick="selecionarOpcao('3-4 pessoas', 'q4', 'q5')">👨‍👩‍👧‍👦 3-4 pessoas</button>
-                    <button class="option-btn" onclick="selecionarOpcao('5+ pessoas', 'q4', 'q5')">👨‍👩‍👧‍👦‍👦 5+ pessoas</button>
-                </div>
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q4', 'q3')">← Voltar</button></div>
+          <div class="question-block" id="q4">
+            <div class="question-title">Quantas pessoas vão morar na casa?</div>
+            <div class="options-group">
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('1-2 pessoas', 'q4', 'q5')"
+              >
+                👨‍👩‍👧 1-2 pessoas
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('3-4 pessoas', 'q4', 'q5')"
+              >
+                👨‍👩‍👧‍👦 3-4 pessoas
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('5+ pessoas', 'q4', 'q5')"
+              >
+                👨‍👩‍👧‍👦‍👦 5+ pessoas
+              </button>
             </div>
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('q4', 'q3')"
+              >
+                ← Voltar
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="q5">
-                <div class="question-title">Qual é seu orçamento aproximado?</div>
-                <div class="options-group">
-                    <button class="option-btn" onclick="selecionarOpcao('Até R$60k', 'q5', 'q6')">💰 Até R$60k</button>
-                    <button class="option-btn" onclick="selecionarOpcao('R$60k - R$90k', 'q5', 'q6')">💰 R$60k - R$90k</button>
-                    <button class="option-btn" onclick="selecionarOpcao('R$90k - R$120k', 'q5', 'q6')">💰 R$90k - R$120k</button>
-                    <button class="option-btn" onclick="selecionarOpcao('Acima de R$120k', 'q5', 'q6')">💰 Acima de R$120k</button>
-                    <button class="option-btn" onclick="selecionarOpcao('Sem orçamento definido', 'q5', 'q6')">🤷 Não tenho orçamento definido</button>
-                </div>
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q5', 'q4')">← Voltar</button></div>
+          <div class="question-block" id="q5">
+            <div class="question-title">Qual é seu orçamento aproximado?</div>
+            <div class="options-group">
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('Até R$60k', 'q5', 'q6')"
+              >
+                💰 Até R$60k
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('R$60k - R$90k', 'q5', 'q6')"
+              >
+                💰 R$60k - R$90k
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('R$90k - R$120k', 'q5', 'q6')"
+              >
+                💰 R$90k - R$120k
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('Acima de R$120k', 'q5', 'q6')"
+              >
+                💰 Acima de R$120k
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('Sem orçamento definido', 'q5', 'q6')"
+              >
+                🤷 Não tenho orçamento definido
+              </button>
             </div>
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('q5', 'q4')"
+              >
+                ← Voltar
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="q6">
-                <div class="question-title">Quais diferenciais interessa?</div>
-                <div class="checkbox-group">
-                    <div class="checkbox-item"><input type="checkbox" id="dif-garagem" value="Garagem"><label for="dif-garagem">🚗 Garagem</label></div>
-                    <div class="checkbox-item"><input type="checkbox" id="dif-piscina" value="Piscina"><label for="dif-piscina">🏊 Piscina</label></div>
-                    <div class="checkbox-item"><input type="checkbox" id="dif-quintal" value="Quintal grande"><label for="dif-quintal">🌳 Quintal grande</label></div>
-                    <div class="checkbox-item"><input type="checkbox" id="dif-varanda" value="Varanda espaçosa"><label for="dif-varanda">☀️ Varanda espaçosa</label></div>
-                </div>
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q6', 'q5')">← Voltar</button><button class="btn-primary" onclick="proximaPergunta('q6', 'q7')">Continuar →</button></div>
+          <div class="question-block" id="q6">
+            <div class="question-title">Quais diferenciais interessa?</div>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="dif-garagem" value="Garagem" /><label
+                  for="dif-garagem"
+                  >🚗 Garagem</label
+                >
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="dif-piscina" value="Piscina" /><label
+                  for="dif-piscina"
+                  >🏊 Piscina</label
+                >
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="dif-quintal"
+                  value="Quintal grande"
+                /><label for="dif-quintal">🌳 Quintal grande</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="dif-varanda"
+                  value="Varanda espaçosa"
+                /><label for="dif-varanda">☀️ Varanda espaçosa</label>
+              </div>
             </div>
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('q6', 'q5')"
+              >
+                ← Voltar</button
+              ><button
+                class="btn-primary"
+                onclick="proximaPergunta('q6', 'q7')"
+              >
+                Continuar →
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="q7">
-                <div class="question-title">Quando pretende iniciar?</div>
-                <div class="options-group">
-                    <button class="option-btn" onclick="selecionarOpcao('O quanto antes', 'q7', 'q8')">⚡ O quanto antes</button>
-                    <button class="option-btn" onclick="selecionarOpcao('Em até 3 meses', 'q7', 'q8')">📅 Em até 3 meses</button>
-                    <button class="option-btn" onclick="selecionarOpcao('Em 3 a 6 meses', 'q7', 'q8')">📅 Em 3 a 6 meses</button>
-                    <button class="option-btn" onclick="selecionarOpcao('Só pesquisando por enquanto', 'q7', 'q8')">🤔 Só pesquisando por enquanto</button>
-                </div>
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q7', 'q6')">← Voltar</button></div>
+          <div class="question-block" id="q7">
+            <div class="question-title">Quando pretende iniciar?</div>
+            <div class="options-group">
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('O quanto antes', 'q7', 'q8')"
+              >
+                ⚡ O quanto antes
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('Em até 3 meses', 'q7', 'q8')"
+              >
+                📅 Em até 3 meses
+              </button>
+              <button
+                class="option-btn"
+                onclick="selecionarOpcao('Em 3 a 6 meses', 'q7', 'q8')"
+              >
+                📅 Em 3 a 6 meses
+              </button>
+              <button
+                class="option-btn"
+                onclick="
+                  selecionarOpcao('Só pesquisando por enquanto', 'q7', 'q8')
+                "
+              >
+                🤔 Só pesquisando por enquanto
+              </button>
             </div>
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('q7', 'q6')"
+              >
+                ← Voltar
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="q8">
-                <div class="question-title">Qual é seu WhatsApp?</div>
-                <input type="tel" class="input-field" id="whatsapp" placeholder="(XX) XXXXX-XXXX" onkeypress="verificarEnter(event, 'q8')">
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q8', 'q7')">← Voltar</button><button class="btn-primary" onclick="proximaPergunta('q8', 'q9')">Continuar →</button></div>
+          <div class="question-block" id="q8">
+            <div class="question-title">Qual é seu WhatsApp?</div>
+            <input
+              type="tel"
+              class="input-field"
+              id="whatsapp"
+              placeholder="(XX) XXXXX-XXXX"
+              onkeypress="verificarEnter(event, 'q8')"
+            />
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('q8', 'q7')"
+              >
+                ← Voltar</button
+              ><button
+                class="btn-primary"
+                onclick="proximaPergunta('q8', 'q9')"
+              >
+                Continuar →
+              </button>
             </div>
+          </div>
 
-            <div class="question-block" id="q9">
-                <div class="question-title">Email? <span style="color: #999; font-weight: 400;">(opcional)</span></div>
-                <input type="email" class="input-field" id="email" placeholder="seu@email.com" onkeypress="verificarEnter(event, 'q9')">
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('q9', 'q8')">← Voltar</button><button class="btn-primary" onclick="irParaResumo('q9')">Continuar →</button></div>
+          <div class="question-block" id="q9">
+            <div class="question-title">
+              Email?
+              <span style="color: #999; font-weight: 400">(opcional)</span>
             </div>
+            <input
+              type="email"
+              class="input-field"
+              id="email"
+              placeholder="seu@email.com"
+              onkeypress="verificarEnter(event, 'q9')"
+            />
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('q9', 'q8')"
+              >
+                ← Voltar</button
+              ><button class="btn-primary" onclick="irParaResumo('q9')">
+                Continuar →
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="resumo">
-                <div class="question-title">✅ Revise Seus Dados</div>
-                <div class="confirmation-box">
-                    <div class="confirmation-item"><span>👤 Nome:</span><strong id="resumo-nome"></strong></div>
-                    <div class="confirmation-item"><span>🏠 Modelo:</span><strong id="resumo-modelo"></strong></div>
-                    <div class="confirmation-item"><span>🏠 Terreno:</span><strong id="resumo-terreno"></strong></div>
-                    <div class="confirmation-item"><span>📍 Estado/Região:</span><strong id="resumo-regiao"></strong></div>
-                    <div class="confirmation-item"><span>👨‍👩‍👧 Família:</span><strong id="resumo-familia"></strong></div>
-                    <div class="confirmation-item"><span>💰 Orçamento:</span><strong id="resumo-orcamento"></strong></div>
-                    <div class="confirmation-item"><span>✨ Diferenciais:</span><strong id="resumo-dif"></strong></div>
-                    <div class="confirmation-item"><span>⏰ Prazo:</span><strong id="resumo-prazo"></strong></div>
-                    <div class="confirmation-item"><span>📱 WhatsApp:</span><strong id="resumo-whatsapp"></strong></div>
-                    <div class="confirmation-item"><span>📧 Email:</span><strong id="resumo-email"></strong></div>
-                </div>
-                <div class="button-group"><button class="btn-secondary" onclick="voltarPergunta('resumo', 'q9')">← Editar</button><button class="btn-primary" onclick="enviarWhatsApp()">✅ Confirmar e Enviar</button></div>
+          <div class="question-block" id="resumo">
+            <div class="question-title">✅ Revise Seus Dados</div>
+            <div class="confirmation-box">
+              <div class="confirmation-item">
+                <span>👤 Nome:</span><strong id="resumo-nome"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>🏠 Modelo:</span><strong id="resumo-modelo"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>🏠 Terreno:</span><strong id="resumo-terreno"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>📍 Estado/Região:</span
+                ><strong id="resumo-regiao"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>👨‍👩‍👧 Família:</span><strong id="resumo-familia"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>💰 Orçamento:</span
+                ><strong id="resumo-orcamento"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>✨ Diferenciais:</span><strong id="resumo-dif"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>⏰ Prazo:</span><strong id="resumo-prazo"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>📱 WhatsApp:</span><strong id="resumo-whatsapp"></strong>
+              </div>
+              <div class="confirmation-item">
+                <span>📧 Email:</span><strong id="resumo-email"></strong>
+              </div>
             </div>
+            <div class="button-group">
+              <button
+                class="btn-secondary"
+                onclick="voltarPergunta('resumo', 'q9')"
+              >
+                ← Editar</button
+              ><button class="btn-primary" onclick="enviarWhatsApp()">
+                ✅ Confirmar e Enviar
+              </button>
+            </div>
+          </div>
 
-            <div class="question-block" id="sucesso">
-                <div class="success-message">
-                    <div class="success-icon">✅</div>
-                    <h3>Pronto!</h3>
-                    <p>Recebi seus dados aqui no meu WhatsApp.<br><br>Em poucos minutos te retorno com um orçamento personalizado para sua casa de madeira! 🏠</p>
-                    <div class="button-group" style="margin-top: 30px;"><button class="btn-primary" onclick="fecharModal()" style="width: 100%;">Fechar</button></div>
-                </div>
+          <div class="question-block" id="sucesso">
+            <div class="success-message">
+              <div class="success-icon">✅</div>
+              <h3>Pronto!</h3>
+              <p>
+                Recebi seus dados aqui no meu WhatsApp.<br /><br />Em poucos
+                minutos te retorno com um orçamento personalizado para sua casa
+                de madeira! 🏠
+              </p>
+              <div class="button-group" style="margin-top: 30px">
+                <button
+                  class="btn-primary"
+                  onclick="fecharModal()"
+                  style="width: 100%"
+                >
+                  Fechar
+                </button>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<script>
-const citiesRs = ['Aceguá', 'Água Santa', 'Agudo', 'Ajuricaba', 'Alecrim', 'Alegrete', 'Alegria', 'Almirante Tamandaré do Vale', 'Alpestre', 'Alto Alegre', 'Alto Feliz', 'Alvorada', 'Amaral Ferrador', 'Ametista do Sul', 'Amizade', 'Amor', 'Amparo do Sul', 'Anadia', 'Anahy', 'Andradas', 'André da Rocha', 'Antenor Leitão', 'Antônio Prado', 'Aratiba', 'Araçoiaba', 'Araçá', 'Aracati', 'Araguaia', 'Arai', 'Aram Sobrevilla', 'Araquá', 'Araras', 'Araucária do Sul', 'Araucária', 'Aratiba', 'Aratinga', 'Arauca', 'Araucariazel', 'Arbela', 'Arbor', 'Arcada', 'Arcela', 'Arcelino', 'Arcoverde', 'Ardoino', 'Areal', 'Arenito', 'Areosa', 'Arestas', 'Arenal', 'Arenales', 'Arenário', 'Arenita', 'Arenopedalite', 'Arenópolis', 'Arenosidade', 'Arenosol', 'Arenota', 'Arenozoico', 'Arenque', 'Areógeno', 'Areógrafo', 'Areología', 'Areológico', 'Areológo', 'Areolación', 'Areolado', 'Areolar', 'Areolario', 'Areolata', 'Areolizado', 'Areólogo', 'Areometría', 'Areométrico', 'Areómetro', 'Areósofo', 'Arepado', 'Arepa', 'Arepaje', 'Arepazo', 'Arepearse', 'Arepería', 'Arepero', 'Arepilla', 'Aresa', 'Aresencia', 'Aresga', 'Aresgarse', 'Aresilla', 'Aresina', 'Aresogene', 'Aresolita', 'Aresón', 'Aresonancia', 'Arespila', 'Arespuela', 'Aresquín', 'Aresquina', 'Aresquinal', 'Aresquinela', 'Aresquinero', 'Aresquinilla', 'Aresquinoso', 'Arespuerca', 'Arestada', 'Arestador', 'Arestadura', 'Arestadura de tejado', 'Arestadura de vestido', 'Arestancia', 'Arestancia de castigo', 'Arestania', 'Arestanía', 'Arestanía de corrales', 'Arestanía de galera', 'Arestanía de iglesia', 'Arestanía de puerta', 'Arestanía de tejadillo', 'Arestanía de vestido', 'Arestanía del techo', 'Arestanía derecha', 'Arestanía izquierda', 'Arestanía transversal', 'Arestanía triangular', 'Arestanía volante', 'Arestador de techo', 'Arestador de vestido', 'Arestadora', 'Arestadora de castigo', 'Arestadora de galera', 'Arestadora de iglesia', 'Arestadora de puerta', 'Arestadora de tejadillo', 'Arestadora de vestido', 'Arestadora del techo', 'Arestadora derecha', 'Arestadora izquierda', 'Arestadora transversal', 'Arestadora triangular', 'Arestadora volante', 'Arestado', 'Arestadura', 'Arestagallo', 'Arestaja', 'Arestajo', 'Arestanca', 'Arestancia', 'Arestanía', 'Arestanilla', 'Arestano', 'Arestante', 'Arestantía', 'Arestantilla', 'Arestantío', 'Arestantiza', 'Arestantizo', 'Arestantizuela', 'Arestantizuelo', 'Arestantizuela', 'Arestantizuelo', 'Arestantizuela', 'Arestantizuelo', 'Arestantizuela', 'Arestantizuelo', 'Arestantizuela', 'Arestantizuelo', 'Arestanzuela', 'Arestanzuelo', 'Arestanzuela', 'Arestanzuelo', 'Arestanzuela', 'Arestanzuelo'];
+    <script>
+      const citiesRs = [
+        "Aceguá",
+        "Água Santa",
+        "Agudo",
+        "Ajuricaba",
+        "Alecrim",
+        "Alegrete",
+        "Alegria",
+        "Almirante Tamandaré do Vale",
+        "Alpestre",
+        "Alto Alegre",
+        "Alto Feliz",
+        "Alvorada",
+        "Amaral Ferrador",
+        "Ametista do Sul",
+        "Amizade",
+        "Amor",
+        "Amparo do Sul",
+        "Anadia",
+        "Anahy",
+        "Andradas",
+        "André da Rocha",
+        "Antenor Leitão",
+        "Antônio Prado",
+        "Aratiba",
+        "Araçoiaba",
+        "Araçá",
+        "Aracati",
+        "Araguaia",
+        "Arai",
+        "Aram Sobrevilla",
+        "Araquá",
+        "Araras",
+        "Araucária do Sul",
+        "Araucária",
+        "Aratiba",
+        "Aratinga",
+        "Arauca",
+        "Araucariazel",
+        "Arbela",
+        "Arbor",
+        "Arcada",
+        "Arcela",
+        "Arcelino",
+        "Arcoverde",
+        "Ardoino",
+        "Areal",
+        "Arenito",
+        "Areosa",
+        "Arestas",
+        "Arenal",
+        "Arenales",
+        "Arenário",
+        "Arenita",
+        "Arenopedalite",
+        "Arenópolis",
+        "Arenosidade",
+        "Arenosol",
+        "Arenota",
+        "Arenozoico",
+        "Arenque",
+        "Areógeno",
+        "Areógrafo",
+        "Areología",
+        "Areológico",
+        "Areológo",
+        "Areolación",
+        "Areolado",
+        "Areolar",
+        "Areolario",
+        "Areolata",
+        "Areolizado",
+        "Areólogo",
+        "Areometría",
+        "Areométrico",
+        "Areómetro",
+        "Areósofo",
+        "Arepado",
+        "Arepa",
+        "Arepaje",
+        "Arepazo",
+        "Arepearse",
+        "Arepería",
+        "Arepero",
+        "Arepilla",
+        "Aresa",
+        "Aresencia",
+        "Aresga",
+        "Aresgarse",
+        "Aresilla",
+        "Aresina",
+        "Aresogene",
+        "Aresolita",
+        "Aresón",
+        "Aresonancia",
+        "Arespila",
+        "Arespuela",
+        "Aresquín",
+        "Aresquina",
+        "Aresquinal",
+        "Aresquinela",
+        "Aresquinero",
+        "Aresquinilla",
+        "Aresquinoso",
+        "Arespuerca",
+        "Arestada",
+        "Arestador",
+        "Arestadura",
+        "Arestadura de tejado",
+        "Arestadura de vestido",
+        "Arestancia",
+        "Arestancia de castigo",
+        "Arestania",
+        "Arestanía",
+        "Arestanía de corrales",
+        "Arestanía de galera",
+        "Arestanía de iglesia",
+        "Arestanía de puerta",
+        "Arestanía de tejadillo",
+        "Arestanía de vestido",
+        "Arestanía del techo",
+        "Arestanía derecha",
+        "Arestanía izquierda",
+        "Arestanía transversal",
+        "Arestanía triangular",
+        "Arestanía volante",
+        "Arestador de techo",
+        "Arestador de vestido",
+        "Arestadora",
+        "Arestadora de castigo",
+        "Arestadora de galera",
+        "Arestadora de iglesia",
+        "Arestadora de puerta",
+        "Arestadora de tejadillo",
+        "Arestadora de vestido",
+        "Arestadora del techo",
+        "Arestadora derecha",
+        "Arestadora izquierda",
+        "Arestadora transversal",
+        "Arestadora triangular",
+        "Arestadora volante",
+        "Arestado",
+        "Arestadura",
+        "Arestagallo",
+        "Arestaja",
+        "Arestajo",
+        "Arestanca",
+        "Arestancia",
+        "Arestanía",
+        "Arestanilla",
+        "Arestano",
+        "Arestante",
+        "Arestantía",
+        "Arestantilla",
+        "Arestantío",
+        "Arestantiza",
+        "Arestantizo",
+        "Arestantizuela",
+        "Arestantizuelo",
+        "Arestantizuela",
+        "Arestantizuelo",
+        "Arestantizuela",
+        "Arestantizuelo",
+        "Arestantizuela",
+        "Arestantizuelo",
+        "Arestantizuela",
+        "Arestantizuelo",
+        "Arestanzuela",
+        "Arestanzuelo",
+        "Arestanzuela",
+        "Arestanzuelo",
+        "Arestanzuela",
+        "Arestanzuelo",
+      ];
 
-const dados = { nome: '', terreno: '', estado: '', regiao: '', familia: '', orcamento: '', dif: [], prazo: '', whatsapp: '', email: '', modelo: '' };
-const LEANDRO_WHATSAPP = '5551991457278';
-const TOTAL_PERGUNTAS = 9;
+      const dados = {
+        nome: "",
+        terreno: "",
+        estado: "",
+        regiao: "",
+        familia: "",
+        orcamento: "",
+        dif: [],
+        prazo: "",
+        whatsapp: "",
+        email: "",
+        modelo: "",
+      };
+      const LEANDRO_WHATSAPP = "5551991457278";
+      const TOTAL_PERGUNTAS = 9;
 
-// Ler query string para modelo pré-selecionado
-const urlParams = new URLSearchParams(window.location.search);
-const modeloParam = urlParams.get('modelo');
-if (modeloParam) {
-  dados.modelo = decodeURIComponent(modeloParam);
-}
+      // Ler query string para modelo pré-selecionado
+      const urlParams = new URLSearchParams(window.location.search);
+      const modeloParam = urlParams.get("modelo");
+      if (modeloParam) {
+        dados.modelo = decodeURIComponent(modeloParam);
+      }
 
-function proximaPergunta(idAtual, idProxima) {
-  if (!validarPergunta(idAtual)) { alert('Por favor, preencha o campo obrigatório'); return; }
-  esconderPergunta(idAtual);
-  exibirPergunta(idProxima);
-  atualizarProgressBar();
-}
+      function proximaPergunta(idAtual, idProxima) {
+        if (!validarPergunta(idAtual)) {
+          alert("Por favor, preencha o campo obrigatório");
+          return;
+        }
+        esconderPergunta(idAtual);
+        exibirPergunta(idProxima);
+        atualizarProgressBar();
+      }
 
-function voltarPergunta(idAtual, idAnterior) {
-  esconderPergunta(idAtual);
-  exibirPergunta(idAnterior);
-  atualizarProgressBar();
-}
+      function voltarPergunta(idAtual, idAnterior) {
+        esconderPergunta(idAtual);
+        exibirPergunta(idAnterior);
+        atualizarProgressBar();
+      }
 
-function irParaResumo(idAtual) {
-  if (!validarPergunta(idAtual)) { alert('Por favor, preencha o WhatsApp'); return; }
-  esconderPergunta(idAtual);
-  exibirResumo();
-}
+      function irParaResumo(idAtual) {
+        if (!validarPergunta(idAtual)) {
+          alert("Por favor, preencha o WhatsApp");
+          return;
+        }
+        esconderPergunta(idAtual);
+        exibirResumo();
+      }
 
-function esconderPergunta(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.remove('active');
-}
+      function esconderPergunta(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove("active");
+      }
 
-function exibirPergunta(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.add('active');
-}
+      function exibirPergunta(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add("active");
+      }
 
-function exibirResumo() {
-  preencherResumo();
-  exibirPergunta('resumo');
-  atualizarProgressBar();
-}
+      function exibirResumo() {
+        preencherResumo();
+        exibirPergunta("resumo");
+        atualizarProgressBar();
+      }
 
-function atualizarProgressBar() {
-  const perguntas = document.querySelectorAll('.question-block');
-  let perguntaAtiva = 0;
-  perguntas.forEach((p, index) => { if (p.classList.contains('active')) perguntaAtiva = index; });
-  const progresso = ((perguntaAtiva) / TOTAL_PERGUNTAS) * 100;
-  document.getElementById('progressBar').style.width = progresso + '%';
-}
+      function atualizarProgressBar() {
+        const perguntas = document.querySelectorAll(".question-block");
+        let perguntaAtiva = 0;
+        perguntas.forEach((p, index) => {
+          if (p.classList.contains("active")) perguntaAtiva = index;
+        });
+        const progresso = (perguntaAtiva / TOTAL_PERGUNTAS) * 100;
+        document.getElementById("progressBar").style.width = progresso + "%";
+      }
 
-function selecionarOpcao(valor, idPergunta, proximaId) {
-  if (idPergunta === 'q4') dados.familia = valor;
-  if (idPergunta === 'q5') dados.orcamento = valor;
-  if (idPergunta === 'q7') dados.prazo = valor;
-  document.querySelectorAll(`#${idPergunta} .option-btn`).forEach(btn => btn.classList.remove('selected'));
-  event.target.classList.add('selected');
-  setTimeout(() => proximaPergunta(idPergunta, proximaId), 300);
-}
+      function selecionarOpcao(valor, idPergunta, proximaId) {
+        if (idPergunta === "q4") dados.familia = valor;
+        if (idPergunta === "q5") dados.orcamento = valor;
+        if (idPergunta === "q7") dados.prazo = valor;
+        document
+          .querySelectorAll(`#${idPergunta} .option-btn`)
+          .forEach((btn) => btn.classList.remove("selected"));
+        event.target.classList.add("selected");
+        setTimeout(() => proximaPergunta(idPergunta, proximaId), 300);
+      }
 
-function selecionarTerreno(valor, idPergunta, proximaId) {
-  dados.terreno = valor;
-  document.querySelectorAll(`#${idPergunta} .option-btn`).forEach(btn => btn.classList.remove('selected'));
-  event.target.classList.add('selected');
-  setTimeout(() => proximaPergunta(idPergunta, proximaId), 300);
-}
+      function selecionarTerreno(valor, idPergunta, proximaId) {
+        dados.terreno = valor;
+        document
+          .querySelectorAll(`#${idPergunta} .option-btn`)
+          .forEach((btn) => btn.classList.remove("selected"));
+        event.target.classList.add("selected");
+        setTimeout(() => proximaPergunta(idPergunta, proximaId), 300);
+      }
 
-function selecionarEstadoComInput(estado, idPergunta) {
-  dados.estado = estado;
-  document.querySelectorAll(`#${idPergunta} .option-btn`).forEach(btn => btn.classList.remove('selected'));
-  event.target.classList.add('selected');
-  document.getElementById('city-input-container-q3').style.display = 'block';
-  document.getElementById('city-input-q3').focus();
-}
+      function selecionarEstadoComInput(estado, idPergunta) {
+        dados.estado = estado;
+        document
+          .querySelectorAll(`#${idPergunta} .option-btn`)
+          .forEach((btn) => btn.classList.remove("selected"));
+        event.target.classList.add("selected");
+        document.getElementById("city-input-container-q3").style.display =
+          "block";
+        document.getElementById("city-input-q3").focus();
+      }
 
-function setupCitySearchQ3(estado) {}
+      function setupCitySearchQ3(estado) {}
 
-function validarPergunta(idPergunta) {
-  if (idPergunta === 'q1') {
-    const nome = document.getElementById('nome').value.trim();
-    if (nome === '') return false;
-    dados.nome = nome;
-    document.getElementById('nomeDisplay').textContent = nome.split(' ')[0];
-    return true;
-  }
-  if (idPergunta === 'q3') {
-    const cidade = document.getElementById('city-input-q3').value.trim();
-    if (cidade === '') return false;
-    dados.regiao = cidade;
-    return true;
-  }
-  if (idPergunta === 'q8') {
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-    if (whatsapp === '') return false;
-    dados.whatsapp = whatsapp;
-    return true;
-  }
-  if (idPergunta === 'q9') {
-    const email = document.getElementById('email').value.trim();
-    dados.email = email;
-    return true;
-  }
-  return true;
-}
+      function validarPergunta(idPergunta) {
+        if (idPergunta === "q1") {
+          const nome = document.getElementById("nome").value.trim();
+          if (nome === "") return false;
+          dados.nome = nome;
+          document.getElementById("nomeDisplay").textContent =
+            nome.split(" ")[0];
+          return true;
+        }
+        if (idPergunta === "q3") {
+          const cidade = document.getElementById("city-input-q3").value.trim();
+          if (cidade === "") return false;
+          dados.regiao = cidade;
+          return true;
+        }
+        if (idPergunta === "q8") {
+          const whatsapp = document.getElementById("whatsapp").value.trim();
+          if (whatsapp === "") return false;
+          dados.whatsapp = whatsapp;
+          return true;
+        }
+        if (idPergunta === "q9") {
+          const email = document.getElementById("email").value.trim();
+          dados.email = email;
+          return true;
+        }
+        return true;
+      }
 
-function verificarEnter(event, idPergunta) {
-  if (event.key === 'Enter') {
-    if (idPergunta === 'q1') proximaPergunta('q1', 'q2');
-    if (idPergunta === 'q3') proximaPergunta('q3', 'q4');
-    if (idPergunta === 'q8') proximaPergunta('q8', 'q9');
-    if (idPergunta === 'q9') irParaResumo('q9');
-  }
-}
+      function verificarEnter(event, idPergunta) {
+        if (event.key === "Enter") {
+          if (idPergunta === "q1") proximaPergunta("q1", "q2");
+          if (idPergunta === "q3") proximaPergunta("q3", "q4");
+          if (idPergunta === "q8") proximaPergunta("q8", "q9");
+          if (idPergunta === "q9") irParaResumo("q9");
+        }
+      }
 
-function preencherResumo() {
-  const difs = [];
-  document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked').forEach(cb => difs.push(cb.value));
-  dados.dif = difs.length > 0 ? difs : [];
-  document.getElementById('resumo-nome').textContent = dados.nome;
-  const modeloItem = document.querySelector('.confirmation-item:nth-child(2)');
-  if (dados.modelo) {
-    document.getElementById('resumo-modelo').textContent = dados.modelo;
-    modeloItem.style.display = 'flex';
-  } else {
-    modeloItem.style.display = 'none';
-  }
-  document.getElementById('resumo-terreno').textContent = dados.terreno;
-  document.getElementById('resumo-regiao').textContent = `${dados.estado} - ${dados.regiao}`;
-  document.getElementById('resumo-familia').textContent = dados.familia;
-  document.getElementById('resumo-orcamento').textContent = dados.orcamento;
-  document.getElementById('resumo-dif').textContent = dados.dif.length > 0 ? dados.dif.join(', ') : 'Nenhum';
-  document.getElementById('resumo-prazo').textContent = dados.prazo;
-  document.getElementById('resumo-whatsapp').textContent = dados.whatsapp;
-  document.getElementById('resumo-email').textContent = dados.email || 'Não fornecido';
-}
+      function preencherResumo() {
+        const difs = [];
+        document
+          .querySelectorAll('.checkbox-group input[type="checkbox"]:checked')
+          .forEach((cb) => difs.push(cb.value));
+        dados.dif = difs.length > 0 ? difs : [];
+        document.getElementById("resumo-nome").textContent = dados.nome;
+        const modeloItem = document.querySelector(
+          ".confirmation-item:nth-child(2)",
+        );
+        if (dados.modelo) {
+          document.getElementById("resumo-modelo").textContent = dados.modelo;
+          modeloItem.style.display = "flex";
+        } else {
+          modeloItem.style.display = "none";
+        }
+        document.getElementById("resumo-terreno").textContent = dados.terreno;
+        document.getElementById("resumo-regiao").textContent =
+          `${dados.estado} - ${dados.regiao}`;
+        document.getElementById("resumo-familia").textContent = dados.familia;
+        document.getElementById("resumo-orcamento").textContent =
+          dados.orcamento;
+        document.getElementById("resumo-dif").textContent =
+          dados.dif.length > 0 ? dados.dif.join(", ") : "Nenhum";
+        document.getElementById("resumo-prazo").textContent = dados.prazo;
+        document.getElementById("resumo-whatsapp").textContent = dados.whatsapp;
+        document.getElementById("resumo-email").textContent =
+          dados.email || "Não fornecido";
+      }
 
-function enviarWhatsApp() {
-  let msg = `Olá! Me chamo ${dados.nome} 👋\n\nQuero construir uma casa de madeira com a Confiancce!\n\n`;
-  if (dados.modelo) {
-    msg += `🏠 Modelo: ${dados.modelo}\n`;
-  }
-  msg += `🏠 Terreno: ${dados.terreno}\n📍 Região: ${dados.estado} - ${dados.regiao}\n👨‍👩‍👧 Família: ${dados.familia}\n💰 Orçamento: ${dados.orcamento}\n✨ Diferenciais: ${dados.dif.length > 0 ? dados.dif.join(', ') : 'Nenhum'}\n⏰ Prazo: ${dados.prazo}\n📧 Email: ${dados.email || 'Não fornecido'}\n\nAguardo retorno! 🙏`;
-  const msgCod = encodeURIComponent(msg);
-  const link = `https://api.whatsapp.com/send?phone=${LEANDRO_WHATSAPP}&text=${msgCod}`;
-  window.open(link, '_blank');
-  esconderPergunta('resumo');
-  exibirPergunta('sucesso');
-}
+      function enviarWhatsApp() {
+        let msg = `Olá! Me chamo ${dados.nome} 👋\n\nQuero construir uma casa de madeira com a Confiancce!\n\n`;
+        if (dados.modelo) {
+          msg += `🏠 Modelo: ${dados.modelo}\n`;
+        }
+        msg += `🏠 Terreno: ${dados.terreno}\n📍 Região: ${dados.estado} - ${dados.regiao}\n👨‍👩‍👧 Família: ${dados.familia}\n💰 Orçamento: ${dados.orcamento}\n✨ Diferenciais: ${dados.dif.length > 0 ? dados.dif.join(", ") : "Nenhum"}\n⏰ Prazo: ${dados.prazo}\n📧 Email: ${dados.email || "Não fornecido"}\n\nAguardo retorno! 🙏`;
+        const msgCod = encodeURIComponent(msg);
+        const link = `https://api.whatsapp.com/send?phone=${LEANDRO_WHATSAPP}&text=${msgCod}`;
+        window.open(link, "_blank");
+        esconderPergunta("resumo");
+        exibirPergunta("sucesso");
+      }
 
-function fecharModal() {
-  window.location.href = './index.dc.html';
-}
+      function fecharModal() {
+        window.location.href = "./index.html";
+      }
 
-window.addEventListener('load', function() { atualizarProgressBar(); });
-</script>
-</body>
+      window.addEventListener("load", function () {
+        atualizarProgressBar();
+      });
+    </script>
+  </body>
 </html>
