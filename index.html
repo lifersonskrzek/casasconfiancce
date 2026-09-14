@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    html { scroll-behavior: smooth; }
+    section { width: 100%; box-sizing: border-box; }
+  </style>
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc style="width: 100%; margin: 0; padding: 0;">
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confiancce - Casas de Madeira</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; color: #333; }
+a { color: #FF914D; text-decoration: none; }
+a:hover { color: #FF7F3F; }
+header { display: flex; flex-direction: row; gap: 16px; padding: 16px 20px; background: #1B2E22; border-bottom: 1px solid rgba(45, 80, 22, 0.15); align-items: center; justify-content: space-between; position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100; }
+header > div:first-child { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+header nav { display: none; }
+header > a { margin-left: auto; }
+header #menu-toggle { margin-left: 0; }
+#menu-toggle { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 0; margin-left: 16px; flex-shrink: 0; }
+#menu-toggle svg { width: 24px; height: 24px; stroke: #F2F2F2; stroke-width: 2.5; stroke-linecap: round; }
+#menu-panel { position: fixed; top: 0; right: 0; width: min(60vw, 300px); height: auto; background: #FFFFFF; transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 999; display: flex; flex-direction: column; padding: 24px 20px; box-shadow: -4px 0 12px rgba(0,0,0,0.1); }
+#menu-panel.open { transform: translateX(0); }
+#menu-close { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; }
+#menu-close svg { width: 24px; height: 24px; stroke: #333; stroke-width: 2.5; stroke-linecap: round; }
+#menu-nav { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; align-items: flex-end; }
+#menu-nav a { color: #333; font-size: 14px; font-weight: 700; text-decoration: none; padding: 8px 0; text-align: right; }
+#menu-nav a:hover { color: #FF914D; }
+#menu-whatsapp { width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin-top: 16px; }
+#menu-whatsapp:hover { background: #FF7F3F; }
+@media (min-width: 970px) {
+  header { gap: 40px; padding: 20px 48px; }
+  header > div:first-child { flex: 0 0 auto; }
+  header nav { display: flex !important; flex-direction: row; gap: 40px; align-items: center; flex: 1; justify-content: center; }
+  header button { margin-left: 0; }
+  #menu-toggle { display: none !important; }
+  #menu-panel { display: none !important; }
+  #whatsapp-header-btn { display: inline-flex !important; }
+}
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header>
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <img src="./logo-confiancce-vazado-full.png" style="height: 48px; width: auto; flex-shrink: 0;">
+    <div style="display: flex; flex-direction: column; gap: 2px; justify-content: center; align-items: center;">
+      <div style="font-weight: 700; font-size: 22px; color: #F2F2F2; letter-spacing: -0.3px;">Confiancce</div>
+      <div style="font-size: 13px; color: #C9CFC5; font-weight: 400; letter-spacing: 0.5px; line-height: 1;">Casas de Madeira</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#modelos" style="color: #FFFFFF; font-size: 14px; font-weight: 700; text-decoration: none;">Modelos de Casas</a>
+    <a href="#como-funciona" style="color: #FFFFFF; font-size: 14px; font-weight: 700; text-decoration: none;">Como funciona</a>
+    <a href="#projetos" style="color: #FFFFFF; font-size: 14px; font-weight: 700; text-decoration: none;">Projetos Entregues</a>
+    <a href="#area-atuacao" style="color: #FFFFFF; font-size: 14px; font-weight: 700; text-decoration: none;">Áreas de Atuação</a>
+  </nav>
+  <a id="whatsapp-header-btn" href="https://wa.me/5551991457278?text=Olá%20pessoal%20da%20Confiancce%20Casas%20de%20Madeira%21%20Encontrei%20o%20site%20de%20vocês%20e%20gostaria%20de%20saber%20mais%20detalhes.%20Vamos%20conversar%3F" target="_blank" style="padding: 10px 20px; height: 40px; background: #FF914D; color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; white-space: nowrap; flex-shrink: 0; text-decoration: none; display: none; align-items: center;">Falar no WhatsApp</a>
+  <button id="menu-toggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+</header>
+
+<!-- MENU SANDUÍCHE -->
+<div id="menu-panel">
+  <button id="menu-close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <nav id="menu-nav">
+    <a href="#modelos">Modelos de Casas</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#projetos">Projetos Entregues</a>
+    <a href="#area-atuacao">Áreas de Atuação</a>
+  </nav>
+  <a id="menu-whatsapp" href="https://wa.me/5551991457278?text=Olá%20pessoal%20da%20Confiancce%20Casas%20de%20Madeira%21%20Encontrei%20o%20site%20de%20vocês%20e%20gostaria%20de%20saber%20mais%20detalhes.%20Vamos%20conversar%3F" target="_blank">Falar no WhatsApp</a>
+</div>
+
+<!-- HERO DESKTOP V2 -->
+<section id="hero-desktop" style="display: none; flex-direction: column; gap: 0; align-items: center; padding: 0; background: #24402F; width: 100%; margin-top: 70px;">
+  <style>
+    @media (min-width: 1280px) {
+      section#hero-desktop { display: flex !important; flex-direction: row !important; }
+    }
+  </style>
+  <div style="max-width: 1200px; margin: 0 auto; width: 100%; display: flex; flex-direction: row; gap: 40px; align-items: center; padding: 80px 40px 60px 40px;">
+    <!-- COLUNA 1 TEXTO -->
+    <div style="display: flex; flex-direction: column; gap: 24px; flex: 0 1 auto;">
+      <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 700; color: #F2F2F2; line-height: 1.2; letter-spacing: -0.5px; text-align: left;">Seu sonho nasce <span style="color: #FF914D;">da confiança</span></h1>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+          <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;">Entregando casas em <strong>madeira nobre</strong> com <strong>agilidade e qualidade.</strong></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+          <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;"><strong>Tranquilidade</strong> de ter <strong>0% de compromisso</strong> ao solicitar o seu orçamento.</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+          <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;">Ferragens e materiais <strong>direto de fábrica.</strong></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+          <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;">Atendemos todo o <strong>Rio Grande do Sul</strong> e <strong>Santa Catarina.</strong></div>
+        </div>
+
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <a href="#modelos" style="padding: 10px 20px; height: 44px; background: transparent; color: #F2F2F2; border: 2px solid #F2F2F2; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; white-space: nowrap; text-decoration: none; display: flex; align-items: center; justify-content: center;">Ver Modelos</a>
+        <a href="bot-orcamento.html" id="btn-orcamento-desktop" style="padding: 10px 20px; height: 44px; background: #FF914D; color: white; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; white-space: nowrap; text-decoration: none; display: flex; align-items: center; justify-content: center;">Solicitar Orçamento</a>
+      </div>
+    </div>
+    <!-- COLUNA 2 IMAGEM CARROSSEL -->
+    <div style="display: flex; flex-direction: column; gap: 24px; flex: 0 1 auto;">
+      <div style="width: 600px; height: 360px; flex-shrink: 0; border-radius: 12px; background: #000; box-shadow: 0 8px 24px rgba(69, 67, 77, 0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+        <div id="carousel-container" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+          <img src="./carrossel-1.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1; animation: zoomAndFade 30s infinite;">
+          <img src="./carrossel-2.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 5s infinite;">
+          <img src="./carrossel-3.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 10s infinite;">
+          <img src="./carrossel-4.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 15s infinite;">
+          <img src="./carrossel-5.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 20s infinite;">
+          <img src="./carrossel-6.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 25s infinite;">
+        </div>
+        <style>
+          @keyframes zoomAndFade {
+            0% { opacity: 0; transform: scale(1); }
+            10% { opacity: 1; transform: scale(1); }
+            85% { opacity: 1; transform: scale(1.4); }
+            95% { opacity: 0; transform: scale(1.4); }
+            100% { opacity: 0; transform: scale(1.4); }
+          }
+        </style>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERO MOBILE -->
+<section id="hero-mobile" style="display: flex; flex-direction: column; gap: 24px; padding: 80px 36px 60px 36px; background: #24402F; margin-top: 70px;">
+  <div style="display: flex; flex-direction: column; gap: 24px; max-width: 500px; margin: 0 auto;">
+    <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 700; color: #F2F2F2; line-height: 1.2; letter-spacing: -0.5px; text-align: left;">Seu sonho nasce <span style="color: #FF914D;">da confiança</span></h1>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+      <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;">Entregando casas em <strong>madeira nobre</strong> com <strong>agilidade e qualidade.</strong></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+      <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;"><strong>Tranquilidade</strong> de ter <strong>0% de compromisso</strong> ao solicitar o seu orçamento.</div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+      <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;">Ferragens e materiais <strong>direto de fábrica.</strong></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 20px; color: #FF914D; flex-shrink: 0;">✓</span>
+      <div style="font-size: 14px; line-height: 1.5; color: #C9CFC5;">Atendemos todo o <strong>Rio Grande do Sul</strong> e <strong>Santa Catarina.</strong></div>
+    </div>
+
+    </div>
+  <div style="width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; background: #000; box-shadow: 0 8px 24px rgba(69, 67, 77, 0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+    <div id="carousel-container-mobile" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+      <img src="./carrossel-1.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1; animation: zoomAndFade 30s infinite;">
+      <img src="./carrossel-2.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 5s infinite;">
+      <img src="./carrossel-3.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 10s infinite;">
+      <img src="./carrossel-4.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 15s infinite;">
+      <img src="./carrossel-5.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 20s infinite;">
+      <img src="./carrossel-6.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 25s infinite;">
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <a href="#modelos" style="padding: 10px 20px; height: 44px; background: transparent; color: #F2F2F2; border: 2px solid #F2F2F2; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center; width: 100%;">Ver Modelos</a>
+    <a href="bot-orcamento.html" id="btn-orcamento-mobile" style="padding: 10px 20px; height: 44px; background: #FF914D; color: white; border: none; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center; width: 100%;">Solicitar Orçamento</a>
+  </div>
+  <style>
+    @media (min-width: 1280px) {
+      section#hero-mobile { display: none !important; }
+      section#hero-desktop { margin-top: 70px; }
+    }
+  </style>
+</section>
+
+<!-- MODELOS -->
+<section id="modelos" style="padding: 40px 20px; background: #FAFAFA;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 32px; font-weight: 700; color: #2D5016; margin-bottom: 8px;">Modelos de Casas de Madeira</h2>
+    <p style="font-size: 13px; color: #666666;">Escolha o modelo que mais se encaixa no seu projeto e sonho.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto;">
+    <style>
+      @media (max-width: 1279px) {
+        section#modelos > div { grid-template-columns: 1fr !important; }
+      }
+
+    </style>
+    
+    <!-- MODELO 1: Casa Essencial -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./araucaria.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Araucária</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Compacta e prática. Projeto funcional para começar.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">42m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 77.900</span>
+        </div>
+        <a href="bot-orcamento.html?modelo=Araucária" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 2: Casa Aconchego -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./cambara.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Cambará</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Confortável e bem proporcionada. Perfeita para famílias.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">61,75m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 119.900</span>
+        </div>
+        <a href="bot-orcamento.html?modelo=Cambará" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 3: Casa Família -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./canela.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Canela</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Espaçosa e aconchegante. Ideal para quem quer conforto.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">72,50m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 140.900</span>
+        </div>
+        <a href="bot-orcamento.html?modelo=Canela" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 4: Casa Requinte -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./paineira.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Paineira</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Espaçosa e confortável. Para famílias maiores.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">3</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">75,25m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 2 Banheiros</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 169.500</span>
+        </div>
+        <a href="bot-orcamento.html?modelo=Paineira" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 5: Casa Freijó -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./freijo.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Freijó</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Elegante e sofisticada em madeira nobre. Conforto e estilo para sua família.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">85m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Nobre</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 190.900</span>
+        </div>
+        <a href="bot-orcamento.html?modelo=Casa+Freijo" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 6: Casa Grápia -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./grapia.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Grápia</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Compacta e aconchegante. Perfeita para famílias que buscam estilo.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">52m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 80.900</span>
+        </div>
+        <a href="bot-orcamento.html?modelo=Casa+Grapia" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 7: Placeholder -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./tauari.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Tauari</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Generosa e confortável. Perfeita para famílias.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">3</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">86,50m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 153.500</span>
+        </div>
+        <a href="bot-orcamento.html" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 8: Placeholder -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./marfim.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Marfim</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Moderna e funcional. Dois banheiros para maior comodidade.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">67,50m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 2 Banheiros</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 127.900</span>
+        </div>
+        <a href="bot-orcamento.html" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 9: Placeholder -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./cedro.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Cedro</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Espaçosa com 3 quartos. Aconchego para a família.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">3</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">79,75m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 124.900</span>
+        </div>
+        <a href="bot-orcamento.html" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+    <!-- MODELO 10: Alecrim -->
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./alecrim.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Alecrim</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Compacta e prática. Ideal para quem quer eficiência.</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <div style="width: 40px; height: 40px; background: #45434D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px; color: #45434D; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Quartos</span>
+            <span style="font-size: 12px; color: #666;">56,25m² Área</span>
+          </div>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; display: flex; flex-direction: column; gap: 6px;">
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> 1 Banheiro</li>
+          <li style="font-size: 13px; color: #333; display: flex; gap: 8px;"><span style="color: #FF914D;">✓</span> Madeira Eucalipto</li>
+        </ul>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-size: 28px; font-weight: 700; color: #FF914D;">R$ 86.900</span>
+        </div>
+        <a href="bot-orcamento.html" style="width: 100%; padding: 12px 16px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(255, 145, 77, 0.3); display: flex; align-items: center; justify-content: center; text-decoration: none;">Consultar Disponibilidade</a>
+      </div>
+    </div>
+
+  </div>
+  
+
+
+  <style>
+    @media (min-width: 768px) {
+      section#modelos { padding: 80px 40px; }
+      section#modelos h2 { font-size: 40px; }
+      section#modelos > div { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+  </style>
+</section>
+
+</section>
+<!-- COMO FUNCIONA -->
+<section id="como-funciona" style="padding: 40px 20px; background: #24402F; color: #F2E9D8; font-family: 'Work Sans', sans-serif; line-height: 1.55;">
+  <div class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column;">
+    <div style="text-align: center; margin-bottom: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 120px;">
+      <h2 style="font-family: 'Montserrat', sans-serif; font-size: 32px; color: #FFFFFF; margin-bottom: 8px; font-weight: 700;">Do orçamento à chave na mão</h2>
+      <p style="font-size: 13px; color: #C9CFC5; margin: 0;">Um processo direto, pensado para tirar o peso da sua obra das suas costas.</p>
+    </div>
+  <div class="steps" style="display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="step" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 16px;">
+      <span class="step-num" style="width: 40px; height: 40px; background: #FF914D; color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">01</span>
+      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 24px; color: #FFFFFF; margin: 0; font-weight: 700;">Orçamento e projeto</h3>
+      <p style="font-size: 14px; color: #C9CFC5; line-height: 1.6; margin: 0;">Você escolhe o modelo ou traz sua planta, e ajustamos ao seu terreno e orçamento — sem compromisso.</p>
+    </div>
+    <div class="step" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+      <span class="step-num" style="width: 40px; height: 40px; background: #FF914D; color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">02</span>
+      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 24px; color: #FFFFFF; margin: 0; font-weight: 700;">Fabricação sob medida</h3>
+      <p style="font-size: 14px; color: #C9CFC5; line-height: 1.6; margin: 0;">A estrutura é preparada e pré-cortada em nosso parque fabril, com madeira nobre ou eucalipto.</p>
+    </div>
+    <div class="step" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+      <span class="step-num" style="width: 40px; height: 40px; background: #FF914D; color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">03</span>
+      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 24px; color: #FFFFFF; margin: 0; font-weight: 700;">Transporte e montagem</h3>
+      <p style="font-size: 14px; color: #C9CFC5; line-height: 1.6; margin: 0;">Equipe própria monta a casa no seu terreno, em qualquer cidade do RS ou SC.</p>
+    </div>
+    <div class="step" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+      <span class="step-num" style="width: 40px; height: 40px; background: #FF914D; color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">04</span>
+      <h3 style="font-family: 'Montserrat', sans-serif; font-size: 24px; color: #FFFFFF; margin: 0; font-weight: 700;">Entrega e pós-venda</h3>
+      <p style="font-size: 14px; color: #C9CFC5; line-height: 1.6; margin: 0;">Acabamento final e acompanhamento pós-entrega, para sua família se sentir em casa desde o primeiro dia.</p>
+    </div>
+  </div>
+  <style>
+    @media (max-width: 767px) {
+      .steps { border-top: 1px solid rgba(255, 255, 255, 0.2); }
+    }
+    @media (min-width: 768px) {
+      section#como-funciona { padding: 120px 48px; }
+      .steps { grid-template-columns: repeat(2, 1fr) !important; gap: 0 !important; border-top: 1px solid rgba(255, 255, 255, 0.2); border-right: 1px solid rgba(255, 255, 255, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+      .step { border-left: 1px solid rgba(255, 255, 255, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.2); border-top: none !important; padding: 40px 48px; }
+      .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+      .step:nth-child(3), .step:nth-child(4) { border-bottom: none; }
+    }
+    @media (min-width: 1200px) {
+      section#como-funciona { padding: 120px 0; }
+      .wrap { padding: 0 48px; }
+      .steps { grid-template-columns: repeat(4, 1fr) !important; border: none; border-top: 1px solid rgba(255, 255, 255, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+      .step { padding: 40px 32px; border-right: 1px solid rgba(255, 255, 255, 0.2); border-top: none; border-bottom: none; border-left: none; }
+      .step:first-child { border-left: none; }
+      .step:last-child { border-right: none; }
+    }
+  </style>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos" style="display: flex; flex-direction: column; gap: 24px; padding: 40px 20px; background: #FFFFFF;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 700; color: #2D5016; margin-bottom: 8px;">Projetos Entregues</h2>
+    <p style="font-size: 13px; color: #666666;">Veja os projetos que já realizamos com sucesso.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto;">
+    <style>
+      @media (max-width: 1279px) {
+        section#projetos > div { grid-template-columns: 1fr !important; }
+      }
+    </style>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./Arroio dos Ratos, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Arroio dos Ratos</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
+        <p style="font-size: 13px; color: #FF914D; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Rio Grande do Sul</p>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./Gramado, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Gramado</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
+        <p style="font-size: 13px; color: #FF914D; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Rio Grande do Sul</p>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./Triunfo, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Triunfo</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
+        <p style="font-size: 13px; color: #FF914D; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Rio Grande do Sul</p>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./Paulo Bento, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Paulo Bento</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
+        <p style="font-size: 13px; color: #FF914D; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Rio Grande do Sul</p>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./Quilombo, SC.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Quilombo</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
+        <p style="font-size: 13px; color: #FF914D; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Santa Catarina</p>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
+      <img src="./Taquara, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <div style="padding: 24px;">
+        <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Taquara</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
+        <p style="font-size: 13px; color: #FF914D; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Rio Grande do Sul</p>
+      </div>
+    </div>
+  </div>
+  <style>
+    @media (min-width: 768px) {
+      section#projetos { padding: 60px 48px; }
+      section#projetos h2 { font-size: 48px; margin-bottom: 24px; }
+      section#projetos > div { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+  </style>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section id="avaliacoes" style="padding: 60px 20px; background: #24402F;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 32px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px;">O que nossos clientes dizem</h2>
+    <p style="font-size: 13px; color: #C9CFC5;">Confira a experiência de quem já construiu conosco.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto;">
+    <div class="review-card" data-review="0" data-name="Luana Karolaine" data-text="Nossa experiência com a Confiancce foi simplesmente excelente. Desde o primeiro contato até a entrega final da obra, a empresa demonstrou profissionalismo, organização, transparência e compromisso com a qualidade. Os prazos foram respeitados, a comunicação sempre clara e o cuidado com cada etapa da construção foi visível. Os acabamentos ficaram impecáveis, com alto padrão e atenção aos mínimos detalhes, o que fez toda a diferença no resultado final. Simplesmente maravilhosos." style="background: rgba(255,255,255,0.95); border-left: 4px solid #FF914D; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-weight: 700; font-size: 14px; color: #333;">Luana Karolaine</span>
+        <span style="font-size: 12px;">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="review-snippet" style="font-size: 13px; font-weight: 500; line-height: 1.6; color: #333; margin-bottom: 12px; min-height: 60px; display: flex; align-items: center;">Os acabamentos ficaram impecáveis, com alto padrão e atenção aos mínimos detalhes.</div>
+      <button class="review-btn" style="background: none; border: none; color: #FF914D; font-weight: 700; font-size: 13px; cursor: pointer; padding: 0;">Leia o que a Luana disse →</button>
+    </div>
+
+    <div class="review-card" data-review="1" data-name="Ademir Zortea" data-text="É realmente uma empresa muito profissional. Desde o fechamento do contrato com o Leandro (vendedor) que se tornou nosso amigo. O material é de primeira linha e a construção da casa realizada pelo Vitor e equipe foi impecável. Só tenho que agradecer. Hoje indico essa empresa pelo profissionalismo e seriedade. Parabéns!" style="background: rgba(255,255,255,0.95); border-left: 4px solid #FF914D; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-weight: 700; font-size: 14px; color: #333;">Ademir Zortea</span>
+        <span style="font-size: 12px;">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="review-snippet" style="font-size: 13px; font-weight: 500; line-height: 1.6; color: #333; margin-bottom: 12px; min-height: 60px; display: flex; align-items: center;">O material é de primeira linha e a construção foi impecável em todos os detalhes.</div>
+      <button class="review-btn" style="background: none; border: none; color: #FF914D; font-weight: 700; font-size: 13px; cursor: pointer; padding: 0;">Leia o que o Ademir disse →</button>
+    </div>
+
+    <div class="review-card" data-review="2" data-name="Adri Paludo" data-text="Uma empresa de competência e excelência, cumpre o que diz com eficiência e com ótimos profissionais. Adorei! Super indico." style="background: rgba(255,255,255,0.95); border-left: 4px solid #FF914D; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-weight: 700; font-size: 14px; color: #333;">Adri Paludo</span>
+        <span style="font-size: 12px;">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="review-snippet" style="font-size: 13px; font-weight: 500; line-height: 1.6; color: #333; margin-bottom: 12px; min-height: 60px; display: flex; align-items: center;">Uma empresa de competência e excelência com ótimos profissionais.</div>
+      <button class="review-btn" style="background: none; border: none; color: #FF914D; font-weight: 700; font-size: 13px; cursor: pointer; padding: 0;">Leia o que a Adri disse →</button>
+    </div>
+
+    <div class="review-card" data-review="3" data-name="Rosa Maria Conte" data-text="Se pudesse dar 10 estrelas eu daria... Gente, desde o primeiro contato fomos muito bem atendidos pelo Leandro, que nos passou e esclareceu todas as dúvidas. Fechamos o contrato com eles — podem confiar. Entrega no prazo, tudo conforme foi combinado. Durante todo o processo do contrato até a entrega da chave não houve nada negativo. A equipe que foi (Victor) maravilhosa, atenciosa. Se fizesse mais casas com certeza essa seria minha construtora. Super, super recomendo." style="background: rgba(255,255,255,0.95); border-left: 4px solid #FF914D; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-weight: 700; font-size: 14px; color: #333;">Rosa Maria Conte</span>
+        <span style="font-size: 12px;">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="review-snippet" style="font-size: 13px; font-weight: 500; line-height: 1.6; color: #333; margin-bottom: 12px; min-height: 60px; display: flex; align-items: center;">Entrega no prazo, tudo conforme foi combinado, e a equipe foi maravilhosa.</div>
+      <button class="review-btn" style="background: none; border: none; color: #FF914D; font-weight: 700; font-size: 13px; cursor: pointer; padding: 0;">Leia o que a Rosa disse →</button>
+    </div>
+
+    <div class="review-card" data-review="4" data-name="Sidenei da Silva" data-text="Só tenho que agradecer à empresa pelo excelente atendimento. Minha casa ficou muito linda." style="background: rgba(255,255,255,0.95); border-left: 4px solid #FF914D; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-weight: 700; font-size: 14px; color: #333;">Sidenei da Silva</span>
+        <span style="font-size: 12px;">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="review-snippet" style="font-size: 13px; font-weight: 500; line-height: 1.6; color: #333; margin-bottom: 12px; min-height: 60px; display: flex; align-items: center;">Só tenho que agradecer à empresa pelo excelente atendimento prestado.</div>
+      <button class="review-btn" style="background: none; border: none; color: #FF914D; font-weight: 700; font-size: 13px; cursor: pointer; padding: 0;">Leia o que o Sidenei disse →</button>
+    </div>
+
+    <div class="review-card" data-review="5" data-name="Adriana Araújo" data-text="Empresa de confiança, desde o começo até o final, com uma equipe comprometida. Minha casa ficou como eu esperava." style="background: rgba(255,255,255,0.95); border-left: 4px solid #FF914D; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-weight: 700; font-size: 14px; color: #333;">Adriana Araújo</span>
+        <span style="font-size: 12px;">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="review-snippet" style="font-size: 13px; font-weight: 500; line-height: 1.6; color: #333; margin-bottom: 12px; min-height: 60px; display: flex; align-items: center;">Empresa de confiança com uma equipe comprometida do início ao fim.</div>
+      <button class="review-btn" style="background: none; border: none; color: #FF914D; font-weight: 700; font-size: 13px; cursor: pointer; padding: 0;">Leia o que a Adriana disse →</button>
+    </div>
+
+    <div class="review-card" data-review="6" data-name="Adriana Gromowski" data-text="Pessoal altamente qualificado e profissional; atendimento muito bom, muito atencionosos, material de boa qualidade!" style="background: rgba(255,255,255,0.95); border-left: 4px solid #FF914D; border-radius: 8px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="font-weight: 700; font-size: 14px; color: #333;">Adriana Gromowski</span>
+        <span style="font-size: 12px;">⭐⭐⭐⭐⭐</span>
+      </div>
+      <div class="review-snippet" style="font-size: 13px; font-weight: 500; line-height: 1.6; color: #333; margin-bottom: 12px; min-height: 60px; display: flex; align-items: center;">Pessoal altamente qualificado com atendimento muito bom e atencionoso.</div>
+      <button class="review-btn" style="background: none; border: none; color: #FF914D; font-weight: 700; font-size: 13px; cursor: pointer; padding: 0;">Leia o que a Adriana disse →</button>
+    </div>
+  </div>
+
+  <div id="review-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;">
+    <div style="background: white; border-radius: 12px; padding: 40px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+      <button id="review-modal-close" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 28px; color: #999; cursor: pointer; padding: 0; width: 32px; height: 32px; line-height: 1;">×</button>
+      <div id="review-modal-name" style="font-weight: 700; font-size: 20px; color: #333; margin-bottom: 8px;"></div>
+      <div style="font-size: 14px; margin-bottom: 24px;">⭐⭐⭐⭐⭐</div>
+      <div id="review-modal-text" style="font-size: 15px; line-height: 1.8; color: #333;"></div>
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 1279px) {
+      section#avaliacoes > div { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</section>
+
+<!-- DICAS -->
+<section id="dicas" style="padding: 40px 20px; background: #FF914D;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px;">Dicas e Inspiração</h2>
+    <p style="font-size: 13px; color: rgba(255,255,255,0.9);">Veja posts do nosso perfil do Instagram que traz dicas e inspiração.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1200px; margin: 0 auto; padding: 0;">
+    <style>
+      @media (max-width: 1279px) {
+        section#dicas > div:last-of-type { grid-template-columns: 1fr !important; }
+      }
+    </style>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: flex; flex-direction: column;">
+      <img src="./card1.webp" style="width: 100%; height: auto; display: block;" alt="Histórias em Madeira" />
+      <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #2D5016; margin: 0; line-height: 1.3;">Histórias em Madeira</h3>
+        <p style="font-size: 13px; color: #666; line-height: 1.5; margin: 0;">Famílias constroem histórias em casas de madeira. Seu sonho começa aqui!</p>
+        <a href="https://www.instagram.com/p/DcBXtEMlsk2" target="_blank" style="display: inline-block; padding: 8px 16px; background: #FF914D; color: white; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 12px; text-align: center;">Abrir no Instagram</a>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: flex; flex-direction: column;">
+      <img src="./card2.webp" style="width: 100%; height: auto; display: block;" alt="O Aconchego da Madeira" />
+      <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #2D5016; margin: 0; line-height: 1.3;">O Aconchego da Madeira</h3>
+        <p style="font-size: 13px; color: #666; line-height: 1.5; margin: 0;">A madeira nobre transforma espaços em lares. Sinta o aconchego do ambiente.</p>
+        <a href="https://www.instagram.com/p/DbLg1paCZ7L" target="_blank" style="display: inline-block; padding: 8px 16px; background: #FF914D; color: white; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 12px; text-align: center;">Abrir no Instagram</a>
+      </div>
+    </div>
+    <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: flex; flex-direction: column;">
+      <img src="./card3.webp" style="width: 100%; height: auto; display: block;" alt="Madeira Nobre em Ação" />
+      <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: #2D5016; margin: 0; line-height: 1.3;">Madeira Nobre em Ação</h3>
+        <p style="font-size: 13px; color: #666; line-height: 1.5; margin: 0;">Projeto em Paulo Bento/RS: madeira nobre que vai além da beleza arquitetônica.</p>
+        <a href="https://www.instagram.com/p/DcTZQv4Fi74" target="_blank" style="display: inline-block; padding: 8px 16px; background: #FF914D; color: white; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 12px; text-align: center;">Abrir no Instagram</a>
+
+</section>
+<!-- ÁREA DE ATUAÇÃO -->
+<section id="area-atuacao" style="display: flex; flex-direction: column; gap: 24px; padding: 40px 20px; background: #F8F8F8;">
+  <div style="max-width: 1200px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 24px;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 700; color: #2D5016; margin-bottom: 16px;">Áreas de Atuação</h2>
+    <p style="font-size: 13px; color: #666666;">Atendemos com excelência todas as regiões do RS e de SC.</p>
+  </div>
+  <div style="max-width: 1100px;  width: 100%;">
+    <div style="background: #FFFFFF; border-radius: 8px; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); overflow: hidden;">
+      <!-- Abas -->
+      <div style="display: flex; border-bottom: 1px solid #E8E8E8;">
+        <div id="tab-rs" style="flex: 1; padding: 16px 20px; background: #FFFFFF; border-bottom: 3px solid #FF914D; font-size: 14px; font-weight: 700; color: #2D5016; cursor: pointer; font-family: 'Montserrat', sans-serif;">Rio Grande do Sul</div>
+        <div id="tab-sc" style="flex: 1; padding: 16px 20px; background: #F8F8F8; border-bottom: 3px solid transparent; font-size: 14px; font-weight: 700; color: #999999; cursor: pointer; font-family: 'Montserrat', sans-serif;">Santa Catarina</div>
+      </div>
+      <!-- Conteúdo RS -->
+      <div id="content-rs" style="padding: 28px 24px;">
+        <p style="font-size: 13px; color: #666666; margin-bottom: 16px; line-height: 1.6;">Atendemos de forma personalizada e ágil <strong>todas as cidades, municípios e distritos</strong> do Rio Grande do Sul com profissionalismo e qualidade.</p>
+        <p style="font-size: 12px; color: #666666; margin-bottom: 16px; line-height: 1.6;">No campo abaixo, digite onde você mora e nos chame no WhatsApp!</p>
+        <div id="input-container-rs" style="padding-top: 16px; display: flex; gap: 8px; align-items: stretch;">
+          <input type="text" id="city-search-rs" placeholder="Sua cidade?" style="flex: 1; padding: 10px 12px; border: 1px solid #E8E8E8; border-radius: 6px; font-size: 13px; font-family: 'Montserrat', sans-serif; background: #FAFAFA; color: #333333; box-sizing: border-box;">
+          <button id="clear-rs" style="width: 44px; height: 44px; padding: 0; background: #FAFAFA; border: 1px solid #E8E8E8; border-radius: 6px; cursor: pointer; font-size: 16px; color: #999999; display: none; flex-shrink: 0;" title="Limpar">✕</button>
+          <a id="whatsapp-rs" href="#" style="padding: 10px 16px; background: #FF914D; color: white; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 12px; display: none; text-align: center; box-sizing: border-box; white-space: nowrap;">WhatsApp</a>
+          <div id="city-list-rs" style="position: fixed; margin-top: 4px; max-height: 200px; overflow-y: auto; display: none; background: #FFFFFF; border: 1px solid #E8E8E8; border-radius: 4px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 300px;"></div>
+        </div>
+        <style>
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          #clear-rs, #clear-sc, #whatsapp-rs, #whatsapp-sc {
+            animation: fadeIn 0.3s ease-in;
+          }
+          @media (max-width: 768px) {
+            #input-container-rs, #input-container-sc {
+              flex-wrap: wrap;
+            }
+            #input-container-rs input, #input-container-sc input {
+              flex: 0 0 100%;
+              order: 1;
+            }
+            #clear-rs, #clear-sc {
+              flex: 0 0 calc(50% - 4px);
+              order: 2;
+            }
+            #whatsapp-rs, #whatsapp-sc {
+              flex: 0 0 calc(50% - 4px);
+              order: 3;
+            }
+          }
+        </style>
+      </div>
+      <!-- Conteúdo SC -->
+      <div id="content-sc" style="padding: 28px 24px; display: none;">
+        <p style="font-size: 13px; color: #666666; margin-bottom: 16px; line-height: 1.6;">Levamos casas de madeira nobre para <strong>todas as cidades, municípios e distritos</strong> de Santa Catarina com agilidade.</p>
+        <p style="font-size: 12px; color: #666666; margin-bottom: 16px; line-height: 1.6;">No campo abaixo, digite onde você mora e nos chame no WhatsApp!</p>
+        <div id="input-container-sc" style="padding-top: 16px; display: flex; gap: 8px; align-items: stretch;">
+          <input type="text" id="city-search-sc" placeholder="Sua cidade?" style="flex: 1; padding: 10px 12px; border: 1px solid #E8E8E8; border-radius: 6px; font-size: 13px; font-family: 'Montserrat', sans-serif; background: #FAFAFA; color: #333333; box-sizing: border-box;">
+          <button id="clear-sc" style="width: 44px; height: 44px; padding: 0; background: #FAFAFA; border: 1px solid #E8E8E8; border-radius: 6px; cursor: pointer; font-size: 16px; color: #999999; display: none; flex-shrink: 0;" title="Limpar">✕</button>
+          <a id="whatsapp-sc" href="#" style="padding: 10px 16px; background: #FF914D; color: white; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 12px; display: none; text-align: center; box-sizing: border-box; white-space: nowrap;">WhatsApp</a>
+          <div id="city-list-sc" style="position: fixed; margin-top: 4px; max-height: 200px; overflow-y: auto; display: none; background: #FFFFFF; border: 1px solid #E8E8E8; border-radius: 4px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 300px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @media (min-width: 768px) {
+      section#area-atuacao { padding: 60px 48px; }
+    }
+  </style>
+
+</section>
+
+<!-- CTA FINAL -->
+<section style="background: #24402F; padding: 60px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto; width: 100%; text-align: center; color: white;">
+  <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 12px;">Pronto para construir?</h2>
+  <p style="font-size: 16px; margin-bottom: 24px; color: #C9CFC5;">Sua casa de madeira pode sair do papel ainda este ano.</p>
+  <a href="bot-orcamento.html" style="padding: 14px 32px; background: #FF914D; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 14px; display: inline-block; text-decoration: none;">Começar Meu Projeto</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #1B2E22; color: #C9CFC5; padding: 40px 20px; margin: 0;">
+  <div style="display: flex; flex-direction: column; gap: 32px; width: 100%; max-width: 1200px; margin: 0 auto;">
+    <!-- Logo & Descrição -->
+    <div style="display: flex; align-items: flex-start; gap: 12px;">
+      <img src="./logo-confiancce-vazado-full.png" style="height: 40px; width: auto; flex-shrink: 0;">
+      <div style="flex: 1;">
+        <div style="font-weight: 700; font-size: 18px; color: #F2F2F2; margin-bottom: 4px;">Confiancce</div>
+        <div style="font-size: 11px; color: #8A9A7F; letter-spacing: 0.5px; margin-bottom: 8px;">CASAS DE MADEIRA</div>
+        <p style="font-size: 12px; color: #A3B299; line-height: 1.6; margin: 0;">Construtora &amp; Ferragem de casas de madeira. Um lugar de confiança para construir seu sonho.</p>
+      </div>
+    </div>
+    <!-- Linha divisória -->
+    <div style="height: 1px; background: rgba(255, 255, 255, 0.1); width: 100%;"></div>
+    <!-- Navegação + Contato -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+      <!-- Navegação -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="font-weight: 700; color: #FF914D; text-transform: uppercase; letter-spacing: 0.5px; font-size: 12px;">Navegação</div>
+        <nav style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="#inicio" style="color: #F2F2F2; text-decoration: none; font-size: 13px;">Início</a>
+          <a href="#modelos" style="color: #F2F2F2; text-decoration: none; font-size: 13px;">Modelos</a>
+          <a href="#como-funciona" style="color: #F2F2F2; text-decoration: none; font-size: 13px;">Como Funciona</a>
+          <a href="#projetos" style="color: #F2F2F2; text-decoration: none; font-size: 13px;">Projetos Entregues</a>
+          <a href="#area-atuacao" style="color: #F2F2F2; text-decoration: none; font-size: 13px;">Área de Atuação</a>
+        </nav>
+      </div>
+      <!-- Contato -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="font-weight: 700; color: #FF914D; text-transform: uppercase; letter-spacing: 0.5px; font-size: 12px;">Contato</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="https://wa.me/5551991457278" style="color: #F2F2F2; text-decoration: none; font-size: 13px;">(51) 99145-7278</a>
+          <a href="https://www.instagram.com/confiancce.construtora" target="_blank" style="color: #F2F2F2; text-decoration: none; font-size: 13px;">@confiancce.construtora</a>
+        </div>
+      </div>
+    </div>
+    <!-- Linha divisória inferior -->
+    <div style="height: 1px; background: rgba(255, 255, 255, 0.1); width: 100%;"></div>
+    <!-- Copyright -->
+    <div style="font-size: 12px; color: #7A8A7F; text-align: center; padding-top: 16px;">© 2026 Confiancce. Todos os direitos reservados.</div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      footer { padding: 60px 48px; }
+    }
+  </style>
+</footer>
+  <!-- Botão Voltar ao Topo -->
+  <div id="scroll-to-top" style="position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px; background: #E67E22; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3); z-index: 999; transition: opacity 0.3s; flex-direction: column;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { activeTab: 'rs', selectedCityRs: null, selectedCitySc: null };
+  
+  citiesRs = ["Aceguá","Agudo","Ajuricaba","Alecrim","Alegrete","Alegria","Almirante Tamandaré do Sul","Alpestre","Alto Alegre","Alto Feliz","Alvorada","Amaral Ferrador","Ametista do Sul","André da Rocha","Anta Gorda","Antônio Prado","Arambaré","Araricá","Aratiba","Arroio Grande","Arroio do Meio","Arroio do Padre","Arroio do Sal","Arroio do Tigre","Arroio dos Ratos","Arvorezinha","Augusto Pestana","Bagé","Balneário Pinhal","Barra Funda","Barra do Guarita","Barra do Quaraí","Barra do Ribeiro","Barra do Rio Azul","Barracão","Barros Cassal","Barão","Barão de Cotegipe","Barão do Triunfo","Benjamin Constant do Sul","Bento Gonçalves","Boa Vista das Missões","Boa Vista do Buricá","Boa Vista do Cadeado","Boa Vista do Incra","Boa Vista do Sul","Bom Jesus","Bom Princípio","Bom Progresso","Bom Retiro do Sul","Boqueirão do Leão","Bossoroca","Bozano","Braga","Brochier","Butiá","Cacequi","Cachoeira do Sul","Cachoeirinha","Cacique Doble","Caibaté","Caiçara","Camaquã","Camargo","Cambará do Sul","Campestre da Serra","Campina das Missões","Campinas do Sul","Campo Bom","Campo Novo","Campos Borges","Candelária","Candiota","Canela","Canguçu","Canoas","Canudos do Vale","Capela de Santana","Capitão","Capivari do Sul","Capão Bonito do Sul","Capão da Canoa","Capão do Cipó","Capão do Leão","Carazinho","Caraá","Carlos Barbosa","Carlos Gomes","Casca","Caseiros","Catuípe","Caxias do Sul","Caçapava do Sul","Centenário","Cerrito","Cerro Branco","Cerro Grande","Cerro Grande do Sul","Cerro Largo","Chapada","Charqueadas","Charrua","Chiapetta","Chuvisca","Chuí","Cidreira","Ciríaco","Colinas","Colorado","Condor","Constantina","Coqueiro Baixo","Coqueiros do Sul","Coronel Barros","Coronel Bicaco","Coronel Pilar","Cotiporã","Coxilha","Crissiumal","Cristal","Cristal do Sul","Cruz Alta","Cruzaltense","Cruzeiro do Sul","Cândido Godói","David Canabarro","Derrubadas","Dezesseis de Novembro","Dilermando de Aguiar","Dois Irmãos","Dois Irmãos das Missões","Dois Lajeados","Dom Feliciano","Dom Pedrito","Dom Pedro de Alcântara","Dona Francisca","Doutor Maurício Cardoso","Doutor Ricardo","Eldorado do Sul","Encantado","Encruzilhada do Sul","Engenho Velho","Entre Rios do Sul","Entre-Ijuís","Erebango","Erechim","Ernestina","Erval Grande","Erval Seco","Esmeralda","Esperança do Sul","Espumoso","Estação","Esteio","Estrela","Estrela Velha","Estância Velha","Eugênio de Castro","Fagundes Varela","Farroupilha","Faxinal do Soturno","Faxinalzinho","Fazenda Vilanova","Feliz","Flores da Cunha","Floriano Peixoto","Fontoura Xavier","Formigueiro","Forquetinha","Fortaleza dos Valos","Frederico Westphalen","Garibaldi","Garruchos","Gaurama","General Câmara","Gentil","Getúlio Vargas","Giruá","Glorinha","Gramado","Gramado Xavier","Gramado dos Loureiros","Gravataí","Guabiju","Guaporé","Guarani das Missões","Guaíba","Harmonia","Herval","Herveiras","Horizontina","Hulha Negra","Humaitá","Ibarama","Ibiaçá","Ibiraiaras","Ibirapuitã","Ibirubá","Igrejinha","Ijuí","Ilópolis","Imbé","Imigrante","Independência","Inhacorá","Ipiranga do Sul","Ipê","Iraí","Itaara","Itacurubi","Itapuca","Itaqui","Itati","Itatiba do Sul","Ivorá","Ivoti","Jaboticaba","Jacuizinho","Jacutinga","Jaguari","Jaguarão","Jaquirana","Jari","Jóia","Júlio de Castilhos","Lagoa Bonita do Sul","Lagoa Vermelha","Lagoa dos Três Cantos","Lagoão","Lajeado","Lajeado do Bugre","Lavras do Sul","Liberato Salzano","Lindolfo Collor","Linha Nova","Machadinho","Mampituba","Manoel Viana","Maquiné","Maratá","Marau","Marcelino Ramos","Mariana Pimentel","Mariano Moro","Marques de Souza","Mata","Mato Castelhano","Mato Leitão","Mato Queimado","Maximiliano de Almeida","Maçambará","Minas do Leão","Miraguaí","Montauri","Monte Alegre dos Campos","Monte Belo do Sul","Montenegro","Mormaço","Morrinhos do Sul","Morro Redondo","Morro Reuter","Mostardas","Muitos Capões","Muliterno","Muçum","Nicolau Vergueiro","Nonoai","Nova Alvorada","Nova Araçá","Nova Bassano","Nova Boa Vista","Nova Bréscia","Nova Candelária","Nova Esperança do Sul","Nova Hartz","Nova Palma","Nova Petrópolis","Nova Prata","Nova Pádua","Nova Ramada","Nova Roma do Sul","Nova Santa Rita","Novo Barreiro","Novo Cabrais","Novo Hamburgo","Novo Machado","Novo Tiradentes","Novo Xingu","Não-Me-Toque","Osório","Paim Filho","Palmares do Sul","Palmeira das Missões","Palmitinho","Panambi","Pantano Grande","Paraí","Paraíso do Sul","Pareci Novo","Parobé","Passa Sete","Passo Fundo","Passo do Sobrado","Paulo Bento","Paverama","Pedras Altas","Pedro Osório","Pejuçara","Pelotas","Picada Café","Pinhal","Pinhal Grande","Pinhal da Serra","Pinheirinho do Vale","Pinheiro Machado","Pinto Bandeira","Pirapó","Piratini","Planalto","Ponte Preta","Pontão","Porto Alegre","Porto Lucena","Porto Mauá","Porto Vera Cruz","Porto Xavier","Portão","Pouso Novo","Poço das Antas","Presidente Lucena","Progresso","Protásio Alves","Putinga","Quaraí","Quatro Irmãos","Quevedos","Quinze de Novembro","Redentora","Relvado","Restinga Sêca","Rio Grande","Rio Pardo","Rio dos Índios","Riozinho","Roca Sales","Rodeio Bonito","Rolador","Rolante","Ronda Alta","Rondinha","Roque Gonzales","Rosário do Sul","Sagrada Família","Saldanha Marinho","Salto do Jacuí","Salvador das Missões","Salvador do Sul","Sananduva","Sant\\'Ana do Livramento","Santa Bárbara do Sul","Santa Cecília do Sul","Santa Clara do Sul","Santa Cruz do Sul","Santa Margarida do Sul","Santa Maria","Santa Maria do Herval","Santa Rosa","Santa Tereza","Santa Vitória do Palmar","Santana da Boa Vista","Santiago","Santo Antônio da Patrulha","Santo Antônio das Missões","Santo Antônio do Palma","Santo Antônio do Planalto","Santo Augusto","Santo Cristo","Santo Expedito do Sul","Santo Ângelo","Sapiranga","Sapucaia do Sul","Sarandi","Seberi","Sede Nova","Segredo","Selbach","Senador Salgado Filho","Sentinela do Sul","Serafina Corrêa","Sertão","Sertão Santana","Sete de Setembro","Severiano de Almeida","Silveira Martins","Sinimbu","Sobradinho","Soledade","São Borja","São Domingos do Sul","São Francisco de Assis","São Francisco de Paula","São Gabriel","São Jerônimo","São Jorge","São José das Missões","São José do Herval","São José do Hortêncio","São José do Inhacorá","São José do Norte","São José do Ouro","São José do Sul","São José dos Ausentes","São João da Urtiga","São João do Polêsine","São Leopoldo","São Lourenço do Sul","São Luiz Gonzaga","São Marcos","São Martinho","São Martinho da Serra","São Miguel das Missões","São Nicolau","São Paulo das Missões","São Pedro da Serra","São Pedro das Missões","São Pedro do Butiá","São Pedro do Sul","São Sebastião do Caí","São Sepé","São Valentim","São Valentim do Sul","São Valério do Sul","São Vendelino","São Vicente do Sul","Sério","Tabaí","Tapejara","Tapera","Tapes","Taquara","Taquari","Taquaruçu do Sul","Tavares","Tenente Portela","Terra de Areia","Teutônia","Tio Hugo","Tiradentes do Sul","Toropi","Torres","Tramandaí","Travesseiro","Trindade do Sul","Triunfo","Três Arroios","Três Cachoeiras","Três Coroas","Três Forquilhas","Três Palmeiras","Três Passos","Três de Maio","Tucunduva","Tunas","Tupanci do Sul","Tupanciretã","Tupandi","Tuparendi","Turuçu","Ubiretama","Unistalda","União da Serra","Uruguaiana","Vacaria","Vale Real","Vale Verde","Vale do Sol","Vanini","Venâncio Aires","Vera Cruz","Veranópolis","Vespasiano Corrêa","Viadutos","Viamão","Vicente Dutra","Victor Graeff","Vila Flores","Vila Lângaro","Vila Maria","Vila Nova do Sul","Vista Alegre","Vista Alegre do Prata","Vista Gaúcha","Vitória das Missões","Westfália","Xangri-lá","Água Santa","Áurea"];
+  
+  citiesSc = ["Abdon Batista","Abelardo Luz","Agrolândia","Agronômica","Alfredo Wagner","Alto Bela Vista","Anchieta","Angelina","Anita Garibaldi","Anitápolis","Antônio Carlos","Apiúna","Arabutã","Araquari","Araranguá","Armazém","Arroio Trinta","Arvoredo","Ascurra","Atalanta","Aurora","Balneário Arroio do Silva","Balneário Barra do Sul","Balneário Camboriú","Balneário Gaivota","Balneário Piçarras","Balneário Rincão","Bandeirante","Barra Bonita","Barra Velha","Bela Vista do Toldo","Belmonte","Benedito Novo","Biguaçu","Blumenau","Bocaina do Sul","Bom Jardim da Serra","Bom Jesus","Bom Jesus do Oeste","Bom Retiro","Bombinhas","Botuverá","Braço do Norte","Braço do Trombudo","Brunópolis","Brusque","Caibi","Calmon","Camboriú","Campo Alegre","Campo Belo do Sul","Campo Erê","Campos Novos","Canelinha","Canoinhas","Capinzal","Capivari de Baixo","Capão Alto","Catanduvas","Caxambu do Sul","Caçador","Celso Ramos","Cerro Negro","Chapadão do Lageado","Chapecó","Cocal do Sul","Concórdia","Cordilheira Alta","Coronel Freitas","Coronel Martins","Correia Pinto","Corupá","Criciúma","Cunha Porã","Cunhataí","Curitibanos","Descanso","Dionísio Cerqueira","Dona Emma","Doutor Pedrinho","Entre Rios","Ermo","Erval Velho","Faxinal dos Guedes","Flor do Sertão","Florianópolis","Formosa do Sul","Forquilhinha","Fraiburgo","Frei Rogério","Galvão","Garopaba","Garuva","Gaspar","Governador Celso Ramos","Gravatal","Grão-Pará","Guabiruba","Guaraciaba","Guaramirim","Guarujá do Sul","Guatambu","Herval d\\'Oeste","Ibiam","Ibicaré","Ibirama","Ilhota","Imaruí","Imbituba","Imbuia","Indaial","Iomerê","Ipira","Iporã do Oeste","Ipuaçu","Ipumirim","Iraceminha","Irani","Irati","Irineópolis","Itaiópolis","Itajaí","Itapema","Itapiranga","Itapoá","Ituporanga","Itá","Içara","Jaborá","Jacinto Machado","Jaguaruna","Jaraguá do Sul","Jardinópolis","Joaçaba","Joinville","José Boiteux","Jupiá","Lacerdópolis","Lages","Laguna","Lajeado Grande","Laurentino","Lauro Müller","Lebon Régis","Leoberto Leal","Lindóia do Sul","Lontras","Luiz Alves","Luzerna","Macieira","Mafra","Major Gercino","Major Vieira","Maracajá","Maravilha","Marema","Massaranduba","Matos Costa","Meleiro","Mirim Doce","Modelo","Mondaí","Monte Carlo","Monte Castelo","Morro Grande","Morro da Fumaça","Navegantes","Nova Erechim","Nova Itaberaba","Nova Trento","Nova Veneza","Novo Horizonte","Orleans","Otacílio Costa","Ouro","Ouro Verde","Paial","Painel","Palhoça","Palma Sola","Palmeira","Palmitos","Papanduva","Paraíso","Passo de Torres","Passos Maia","Paulo Lopes","Pedras Grandes","Penha","Peritiba","Pescaria Brava","Petrolândia","Pinhalzinho","Pinheiro Preto","Piratuba","Planalto Alegre","Pomerode","Ponte Alta","Ponte Alta do Norte","Ponte Serrada","Porto Belo","Porto União","Pouso Redondo","Praia Grande","Presidente Castello Branco","Presidente Getúlio","Presidente Nereu","Princesa","Quilombo","Rancho Queimado","Rio Fortuna","Rio Negrinho","Rio Rufino","Rio das Antas","Rio do Campo","Rio do Oeste","Rio do Sul","Rio dos Cedros","Riqueza","Rodeio","Romelândia","Salete","Saltinho","Salto Veloso","Sangão","Santa Cecília","Santa Helena","Santa Rosa de Lima","Santa Rosa do Sul","Santa Terezinha","Santa Terezinha do Progresso","Santiago do Sul","Santo Amaro da Imperatriz","Saudades","Schroeder","Seara","Serra Alta","Siderópolis","Sombrio","Sul Brasil","São Bento do Sul","São Bernardino","São Bonifácio","São Carlos","São Cristóvão do Sul","São Domingos","São Francisco do Sul","São Joaquim","São José","São José do Cedro","São José do Cerrito","São João Batista","São João do Itaperiú","São João do Oeste","São João do Sul","São Lourenço do Oeste","São Ludgero","São Martinho","São Miguel da Boa Vista","São Miguel do Oeste","São Pedro de Alcântara","Taió","Tangará","Tigrinhos","Tijucas","Timbé do Sul","Timbó","Timbó Grande","Treviso","Treze Tílias","Treze de Maio","Trombudo Central","Três Barras","Tubarão","Tunápolis","Turvo","União do Oeste","Urubici","Urupema","Urussanga","Vargem","Vargem Bonita","Vargeão","Vidal Ramos","Videira","Vitor Meireles","Witmarsum","Xanxerê","Xavantina","Xaxim","Zortéa","Água Doce","Águas Frias","Águas Mornas","Águas de Chapecó"];
+  
+  renderVals() {
+    return {
+      activeTab: this.state.activeTab,
+      selectedCityRs: this.state.selectedCityRs,
+      selectedCitySc: this.state.selectedCitySc
+    };
+  }
+  
+  componentDidMount() {
+    this.setupTabs();
+    this.setupAutocomplete('rs');
+    this.setupAutocomplete('sc');
+    this.setupScrollToTop();
+    this.setupMobileMenu();
+    this.setupReviews();
+  }
+  
+  setupMobileMenu() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuPanel = document.getElementById('menu-panel');
+    const menuClose = document.getElementById('menu-close');
+    const menuLinks = document.querySelectorAll('#menu-nav a');
+    
+    if (!menuToggle || !menuPanel) return;
+    
+    menuToggle.addEventListener('click', () => {
+      if (menuPanel.classList.contains('open')) {
+        menuPanel.classList.remove('open');
+      } else {
+        menuPanel.classList.add('open');
+      }
+    });
+    
+    menuClose.addEventListener('click', () => {
+      menuPanel.classList.remove('open');
+    });
+    
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuPanel.classList.remove('open');
+      });
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!menuPanel.contains(e.target) && e.target !== menuToggle && !menuToggle.contains(e.target)) {
+        if (menuPanel.classList.contains('open')) {
+          menuPanel.classList.remove('open');
+        }
+      }
+    });
+  }
+
+  setupReviews() {
+    const modal = document.getElementById('review-modal');
+    const modalName = document.getElementById('review-modal-name');
+    const modalText = document.getElementById('review-modal-text');
+    const modalClose = document.getElementById('review-modal-close');
+    const reviewCards = document.querySelectorAll('.review-card');
+
+    reviewCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const name = card.dataset.name;
+        const text = card.dataset.text;
+        
+        modalName.textContent = name;
+        modalText.textContent = text;
+        modal.style.opacity = '1';
+        modal.style.pointerEvents = 'auto';
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.style.opacity = '0';
+      modal.style.pointerEvents = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.opacity = '0';
+        modal.style.pointerEvents = 'none';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.opacity === '1') {
+        modal.style.opacity = '0';
+        modal.style.pointerEvents = 'none';
+      }
+    });
+  }
+  
+  scrollToAreaAtuacao = () => {
+    const section = document.getElementById('area-atuacao');
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  setupScrollToTop() {
+    const scrollBtn = document.getElementById('scroll-to-top');
+    if (!scrollBtn) return;
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollBtn.style.display = 'flex';
+      } else {
+        scrollBtn.style.display = 'none';
+      }
+    });
+    
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  
+  setupTabs() {
+    const tabRs = document.getElementById('tab-rs');
+    const tabSc = document.getElementById('tab-sc');
+    const contentRs = document.getElementById('content-rs');
+    const contentSc = document.getElementById('content-sc');
+    
+    if (!tabRs || !tabSc) return;
+    
+    tabRs.addEventListener('click', () => {
+      this.resetTab('sc');
+      this.resetTab('rs');
+      contentRs.style.display = 'block';
+      contentSc.style.display = 'none';
+      tabRs.style.background = '#FFFFFF';
+      tabRs.style.color = '#2D5016';
+      tabRs.style.borderBottomColor = '#FF914D';
+      tabSc.style.background = '#F8F8F8';
+      tabSc.style.color = '#999999';
+      tabSc.style.borderBottomColor = 'transparent';
+    });
+    
+    tabSc.addEventListener('click', () => {
+      this.resetTab('rs');
+      this.resetTab('sc');
+      contentRs.style.display = 'none';
+      contentSc.style.display = 'block';
+      tabSc.style.background = '#FFFFFF';
+      tabSc.style.color = '#2D5016';
+      tabSc.style.borderBottomColor = '#FF914D';
+      tabRs.style.background = '#F8F8F8';
+      tabRs.style.color = '#999999';
+      tabRs.style.borderBottomColor = 'transparent';
+    });
+  }
+  
+  setupAutocomplete(state) {
+    const input = document.getElementById(`city-search-${state}`);
+    const dropdown = document.getElementById(`city-list-${state}`);
+    const cities = state === 'rs' ? this.citiesRs : this.citiesSc;
+    const stateLabel = state === 'rs' ? 'Rio Grande do Sul' : 'Santa Catarina';
+    
+    if (!input || !dropdown) return;
+    
+    let debounceTimer;
+    let selectedIndex = -1;
+    let scrollListener;
+    
+    const updateDropdownPosition = () => {
+      const rect = input.getBoundingClientRect();
+      dropdown.style.top = (rect.bottom + 4) + 'px';
+      dropdown.style.left = rect.left + 'px';
+      dropdown.style.width = rect.width + 'px';
+    };
+    
+    const renderDropdown = (filtered) => {
+      if (filtered.length === 0) {
+        dropdown.innerHTML = '';
+        dropdown.style.display = 'none';
+        return;
+      }
+      
+      dropdown.innerHTML = filtered.map((city, idx) => 
+        `<div style="padding: 10px 12px; cursor: pointer; border-bottom: 1px solid #F0F0F0; font-size: 13px; color: #333; font-family: 'Montserrat', sans-serif; transition: background 0.2s; white-space: nowrap;" class="city-option" data-index="${idx}" data-city="${city}">${city}</div>`
+      ).join('');
+      
+      updateDropdownPosition();
+      dropdown.style.display = 'block';
+      selectedIndex = -1;
+      
+      // Remover listener anterior se existir
+      if (scrollListener) window.removeEventListener('scroll', scrollListener);
+      
+      // Adicionar novo listener
+      scrollListener = updateDropdownPosition;
+      window.addEventListener('scroll', scrollListener);
+      
+      // Event listeners para opções
+      dropdown.querySelectorAll('.city-option').forEach(option => {
+        option.addEventListener('mouseover', function() {
+          selectedIndex = parseInt(this.getAttribute('data-index'));
+          updateHighlight();
+        });
+        option.addEventListener('mouseout', () => option.style.background = 'transparent');
+        option.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectCity(option.getAttribute('data-city'));
+        });
+      });
+    };
+    
+    const updateHighlight = () => {
+      dropdown.querySelectorAll('.city-option').forEach((opt, idx) => {
+        opt.style.background = idx === selectedIndex ? '#F5F5F5' : 'transparent';
+      });
+    };
+    
+    const selectCity = (city) => {
+      input.value = city;
+      document.getElementById(`clear-${state}`).style.display = 'block';
+      dropdown.style.display = 'none';
+      dropdown.innerHTML = '';
+      this.setState({ [state === 'rs' ? 'selectedCityRs' : 'selectedCitySc']: city });
+      this.showWhatsAppButton(state, city, stateLabel);
+      if (scrollListener) window.removeEventListener('scroll', scrollListener);
+    };
+    
+    input.addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      const query = e.target.value.trim().toUpperCase();
+      const clearBtn = document.getElementById(`clear-${state}`);
+      
+      if (query.length > 0) {
+        clearBtn.style.display = 'block';
+      } else {
+        clearBtn.style.display = 'none';
+        dropdown.style.display = 'none';
+        if (scrollListener) window.removeEventListener('scroll', scrollListener);
+        return;
+      }
+      
+      debounceTimer = setTimeout(() => {
+        const filtered = cities.filter(city => city.toUpperCase().includes(query))
+          .sort((a, b) => {
+            const aUpper = a.toUpperCase();
+            const bUpper = b.toUpperCase();
+            const aStartsWith = aUpper.startsWith(query) ? 0 : 1;
+            const bStartsWith = bUpper.startsWith(query) ? 0 : 1;
+            if (aStartsWith !== bStartsWith) return aStartsWith - bStartsWith;
+            return aUpper.localeCompare(bUpper);
+          });
+        renderDropdown(filtered);
+      }, 150);
+    });
+    
+    input.addEventListener('keydown', (e) => {
+      const options = dropdown.querySelectorAll('.city-option');
+      if (options.length === 0) return;
+      
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = Math.min(selectedIndex + 1, options.length - 1);
+        updateHighlight();
+        options[selectedIndex]?.scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, -1);
+        updateHighlight();
+        if (selectedIndex >= 0) options[selectedIndex]?.scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (selectedIndex >= 0) {
+          selectCity(options[selectedIndex].getAttribute('data-city'));
+        }
+      } else if (e.key === 'Escape') {
+        dropdown.style.display = 'none';
+        if (scrollListener) window.removeEventListener('scroll', scrollListener);
+      }
+    });
+    
+    const clearBtn = document.getElementById(`clear-${state}`);
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      clearBtn.style.display = 'none';
+      dropdown.style.display = 'none';
+      dropdown.innerHTML = '';
+      const whatsappBtn = document.getElementById(`whatsapp-${state}`);
+      if (whatsappBtn) whatsappBtn.style.display = 'none';
+      if (scrollListener) window.removeEventListener('scroll', scrollListener);
+      input.focus();
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (e.target !== input && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
+        if (scrollListener) window.removeEventListener('scroll', scrollListener);
+      }
+    });
+  }
+  
+  showWhatsAppButton(state, city, stateLabel) {
+    const whatsappBtn = document.getElementById(`whatsapp-${state}`);
+    if (!whatsappBtn) return;
+    
+    const message = `Quero saber mais sobre a construção de casas de madeira em ${city}, ${stateLabel}. Pode me ajudar, por favor?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/5551991457278?text=${encodedMessage}`;
+    
+    whatsappBtn.href = whatsappUrl;
+    whatsappBtn.target = '_blank';
+    whatsappBtn.style.display = 'flex';
+    whatsappBtn.style.alignItems = 'center';
+    whatsappBtn.style.justifyContent = 'center';
+  }
+  
+  resetTab(state) {
+    const input = document.getElementById(`city-search-${state}`);
+    const clear = document.getElementById(`clear-${state}`);
+    const whatsapp = document.getElementById(`whatsapp-${state}`);
+    const dropdown = document.getElementById(`city-list-${state}`);
+    
+    if (input) input.value = '';
+    if (clear) clear.style.display = 'none';
+    if (whatsapp) whatsapp.style.display = 'none';
+    if (dropdown) dropdown.innerHTML = '';
+    if (dropdown) dropdown.style.display = 'none';
+    
+    this.setState({ [state === 'rs' ? 'selectedCityRs' : 'selectedCitySc']: null });
+  }
+
+
+}
+</script>
+</body>
+</html>
