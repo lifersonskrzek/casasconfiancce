@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://casasconfiancce.com.br/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Seção Modelos -->
+  <url>
+    <loc>https://casasconfiancce.com.br/#modelos</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Seção Como Funciona -->
+  <url>
+    <loc>https://casasconfiancce.com.br/#como-funciona</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Seção Projetos Entregues -->
+  <url>
+    <loc>https://casasconfiancce.com.br/#projetos</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Seção Avaliações -->
+  <url>
+    <loc>https://casasconfiancce.com.br/#avaliacoes</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Seção Dicas -->
+  <url>
+    <loc>https://casasconfiancce.com.br/#dicas</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Seção Área de Atuação -->
+  <url>
+    <loc>https://casasconfiancce.com.br/#area-atuacao</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Página de Orçamento -->
+  <url>
+    <loc>https://casasconfiancce.com.br/bot-orcamento.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Imagens principais para SEO -->
+  <url>
+    <loc>https://casasconfiancce.com.br/</loc>
+    <image:image>
+      <image:loc>https://casasconfiancce.com.br/assets/images/carrossel-1.webp</image:loc>
+      <image:title>Casa de Madeira Confiancce</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://casasconfiancce.com.br/assets/images/Paulo Bento, RS.webp</image:loc>
+      <image:title>Projeto em Paulo Bento, RS</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://casasconfiancce.com.br/assets/images/Gramado, RS.webp</image:loc>
+      <image:title>Projeto em Gramado, RS</image:title>
+    </image:image>
+  </url>
+
+</urlset>

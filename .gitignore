@@ -1,0 +1,48 @@
+# Dependências
+node_modules/
+package-lock.json
+yarn.lock
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+.windows-thumbs.db
+
+# Editor e IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.log
+*.bak
+pasted-*.txt
+
+# Build e dist (para uso futuro)
+dist/
+build/
+.next/
+out/
+
+# Cache
+.cache/
+.eslintcache
+
+# Testes
+coverage/
+.nyc_output/
+
+# OS específico
+*.pem
+*.key
