@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="z1i0KTrDCyUppyxUA7mnSRyVrcr1W4CZo-dFsgpQOaU" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZQ6SJ0545"></script>
@@ -8,30 +12,371 @@
   gtag('js', new Date());
   gtag('config', 'G-5ZQ6SJ0545');
 </script>
+<script>
+  document.addEventListener('click', function (e) {
+    try {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || typeof gtag !== 'function') return;
+      var href = a.getAttribute('href') || '';
+      if (/wa\.me|api\.whatsapp\.com/.test(href)) {
+        gtag('event', 'click_whatsapp', { local: a.id || 'link_whatsapp', transport_type: 'beacon' });
+      } else if (href.indexOf('bot-orcamento') !== -1) {
+        var m = href.match(/modelo=([^&]+)/);
+        gtag('event', 'click_orcamento', { local: a.id || (m ? 'card_modelo' : 'botao_orcamento'), modelo: m ? decodeURIComponent(m[1]) : '', transport_type: 'beacon' });
+      }
+    } catch (err) {}
+  }, true);
+</script>
+<meta name="description" content="Casas de madeira pré-fabricadas no RS e SC, em madeira nobre e eucalipto. Projetos de 42 a 102 m² com preços a partir de R$ 77.900. Orçamento sem compromisso.">
+<meta name="keywords" content="casas de madeira, casas pré-fabricadas, casa pre fabricada, casa de madeira no RS, casa de madeira em SC, casas de madeira nobre, casas de eucalipto, precos de casas de madeira, projetos de casas de madeira, casas pré fabricadas de madeira">
+<meta name="author" content="Confiancce Casas de Madeira e Ferragem">
+<meta property="og:title" content="Casas de Madeira Pré-fabricadas no RS e SC | Confiancce">
+<meta property="og:description" content="Casas de madeira pré-fabricadas no RS e SC, em madeira nobre e eucalipto. Projetos de 42 a 102 m² com preços a partir de R$ 77.900. Orçamento sem compromisso.">
+<meta property="og:image" content="https://casasconfiancce.com.br/assets/images/logo-confiancce-vazado-full.png">
+<meta property="og:url" content="https://casasconfiancce.com.br/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://casasconfiancce.com.br/">
+<title>Casas de Madeira Pré-fabricadas no RS e SC | Confiancce</title>
+
+<!-- JSON-LD Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Confiancce",
+  "alternateName": "Confiancce Casas de Madeira",
+  "url": "https://casasconfiancce.com.br",
+  "logo": "https://casasconfiancce.com.br/assets/images/logo-confiancce-vazado-full.png",
+  "description": "Construtora de casas de madeira pré-fabricadas em madeira nobre e eucalipto. Operamos em Rio Grande do Sul e Santa Catarina com entrega rápida e 0% de compromisso no orçamento.",
+  "sameAs": [
+    "https://www.instagram.com/confiancce.construtora",
+    "https://wa.me/5551991457278"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+55-51-99145-7278",
+    "url": "https://wa.me/5551991457278"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Confiancce Casas de Madeira",
+  "image": "https://casasconfiancce.com.br/assets/images/logo-confiancce-vazado-full.png",
+  "description": "Construtora especializada em casas de madeira pré-fabricadas no Rio Grande do Sul e Santa Catarina",
+  "url": "https://casasconfiancce.com.br",
+  "telephone": "+55-51-99145-7278",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. José Bonalume, 2615 - Bom Sucesso",
+    "addressLocality": "Gravataí",
+    "addressRegion": "RS",
+    "postalCode": "94090-720",
+    "addressCountry": "BR"
+  },
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Rio Grande do Sul",
+      "url": "https://casasconfiancce.com.br/#area-atuacao"
+    },
+    {
+      "@type": "State",
+      "name": "Santa Catarina",
+      "url": "https://casasconfiancce.com.br/#area-atuacao"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/confiancce.construtora"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "7",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Luana Karolaine"
+      },
+      "reviewBody": "Nossa experiência com a Confiancce foi simplesmente excelente. Os acabamentos ficaram impecáveis, com alto padrão e atenção aos mínimos detalhes."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ademir Zortea"
+      },
+      "reviewBody": "É realmente uma empresa muito profissional. O material é de primeira linha e a construção foi impecável em todos os detalhes."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Adri Paludo"
+      },
+      "reviewBody": "Uma empresa de competência e excelência com ótimos profissionais."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Rosa Maria Conte"
+      },
+      "reviewBody": "Entrega no prazo, tudo conforme foi combinado, e a equipe foi maravilhosa."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sidenei da Silva"
+      },
+      "reviewBody": "Só tenho que agradecer à empresa pelo excelente atendimento prestado."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Adriana Araújo"
+      },
+      "reviewBody": "Empresa de confiança com uma equipe comprometida do início ao fim."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Adriana Gromowski"
+      },
+      "reviewBody": "Pessoal altamente qualificado com atendimento muito bom e atencionoso."
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-araucaria",
+      "name": "Casa Araucária",
+      "description": "Compacta e prática. Projeto funcional para começar. 2 quartos, 1 banheiro, 42m²",
+      "image": "https://casasconfiancce.com.br/assets/images/araucaria.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "77900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-cambara",
+      "name": "Casa Cambará",
+      "description": "Confortável e bem proporcionada. Perfeita para famílias. 2 quartos, 1 banheiro, 61,75m²",
+      "image": "https://casasconfiancce.com.br/assets/images/cambara.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "119900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-canela",
+      "name": "Casa Canela",
+      "description": "Espaçosa e aconchegante. Ideal para quem quer conforto. 2 quartos, 1 banheiro, 73m²",
+      "image": "https://casasconfiancce.com.br/assets/images/canela.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "140900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-paineira",
+      "name": "Casa Paineira",
+      "description": "Espaçosa e confortável. Para famílias maiores. 3 quartos, 2 banheiros, 85m²",
+      "image": "https://casasconfiancce.com.br/assets/images/paineira.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "169500",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-freijo",
+      "name": "Casa Freijó",
+      "description": "Elegante e sofisticada em madeira nobre. Conforto e estilo para sua família. 2 quartos, 1 banheiro, 102,5m²",
+      "image": "https://casasconfiancce.com.br/assets/images/freijo.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "190900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-grapia",
+      "name": "Casa Grápia",
+      "description": "Compacta e aconchegante. Perfeita para famílias que buscam estilo. 2 quartos, 1 banheiro, 42,5m²",
+      "image": "https://casasconfiancce.com.br/assets/images/grapia.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "80900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-tauari",
+      "name": "Casa Tauari",
+      "description": "Generosa e confortável. Perfeita para famílias. 3 quartos, 1 banheiro, 86,5m²",
+      "image": "https://casasconfiancce.com.br/assets/images/tauari.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "153500",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-marfim",
+      "name": "Casa Marfim",
+      "description": "Moderna e funcional. Dois banheiros para maior comodidade. 2 quartos, 2 banheiros, 67,5m²",
+      "image": "https://casasconfiancce.com.br/assets/images/marfim.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "127900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-cedro",
+      "name": "Casa Cedro",
+      "description": "Espaçosa com 3 quartos. Aconchego para a família. 3 quartos, 1 banheiro, 79,75m²",
+      "image": "https://casasconfiancce.com.br/assets/images/cedro.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "124900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://casasconfiancce.com.br/#modelo-alecrim",
+      "name": "Casa Alecrim",
+      "description": "Compacta e prática. Ideal para quem quer eficiência. 2 quartos, 1 banheiro, 56,25m²",
+      "image": "https://casasconfiancce.com.br/assets/images/alecrim.webp",
+      "offers": {
+        "@type": "Offer",
+        "price": "86900",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Confiancce",
+      "item": "https://casasconfiancce.com.br"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Modelos",
+      "item": "https://casasconfiancce.com.br/#modelos"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Como Funciona",
+      "item": "https://casasconfiancce.com.br/#como-funciona"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Projetos",
+      "item": "https://casasconfiancce.com.br/#projetos"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Área de Atuação",
+      "item": "https://casasconfiancce.com.br/#area-atuacao"
+    }
+  ]
+}
+</script>
+
 <style>
     html { scroll-behavior: smooth; }
     section { width: 100%; box-sizing: border-box; }
   </style>
-  <script src="./support.js"></script>
+  <script src="./assets/js/support.js"></script>
 </head>
 <body>
 <x-dc style="width: 100%; margin: 0; padding: 0;">
 <helmet>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Casas de madeira pré-fabricadas no RS e SC. Modelos de 42 a 86m², entrega rápida, 0% de compromisso no orçamento. Madeira nobre e eucalipto.">
-<meta name="keywords" content="casas de madeira, casas pré-fabricadas, casas madeira Rio Grande do Sul, casas madeira Santa Catarina, casas madeira nobre, casas eucalipto, construção madeira, madeira pré-cortada, projeto casas madeira, construtor casas madeira RS SC">
-<meta name="author" content="Confiancce Casas de Madeira e Ferragem">
-<meta property="og:title" content="Confiancce - Casas de Madeira Pré-fabricadas">
-<meta property="og:description" content="Casas de madeira pré-fabricadas no RS e SC. Modelos de 42 a 86m², entrega rápida, 0% de compromisso no orçamento.">
-<meta property="og:image" content="https://casasconfiancce.com.br/logo-confiancce-vazado-full.png">
-<meta property="og:url" content="https://casasconfiancce.com.br/">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://casasconfiancce.com.br/">
-<title>Confiancce - Casas de Madeira Pré-fabricadas | RS e SC</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -69,7 +414,7 @@ header #menu-toggle { margin-left: 0; }
 <!-- HEADER -->
 <header>
   <div style="display: flex; align-items: center; gap: 12px;">
-    <img src="./logo-confiancce-vazado-full.png" style="height: 48px; width: auto; flex-shrink: 0;">
+    <img alt="Logo Confiancce Casas de Madeira" src="./assets/images/logo-confiancce-vazado-full.png" style="height: 48px; width: auto; flex-shrink: 0;">
     <div style="display: flex; flex-direction: column; gap: 2px; justify-content: center; align-items: center;">
       <div style="font-weight: 700; font-size: 22px; color: #F2F2F2; letter-spacing: -0.3px;">Confiancce</div>
       <div style="font-size: 13px; color: #C9CFC5; font-weight: 400; letter-spacing: 0.5px; line-height: 1;">Casas de Madeira</div>
@@ -147,12 +492,12 @@ header #menu-toggle { margin-left: 0; }
     <div style="display: flex; flex-direction: column; gap: 24px; flex: 0 1 auto;">
       <div style="width: 600px; height: 360px; flex-shrink: 0; border-radius: 12px; background: #000; box-shadow: 0 8px 24px rgba(69, 67, 77, 0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
         <div id="carousel-container" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-          <img src="./carrossel-1.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1; animation: zoomAndFade 30s infinite;">
-          <img src="./carrossel-2.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 5s infinite;">
-          <img src="./carrossel-3.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 10s infinite;">
-          <img src="./carrossel-4.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 15s infinite;">
-          <img src="./carrossel-5.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 20s infinite;">
-          <img src="./carrossel-6.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 25s infinite;">
+          <img alt="Casa de madeira pré-fabricada Confiancce com varanda" src="./assets/images/carrossel-1.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1; animation: zoomAndFade 30s infinite;">
+          <img alt="Casa de madeira Confiancce – vista externa" src="./assets/images/carrossel-2.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 5s infinite;">
+          <img alt="Casa pré-fabricada de madeira Confiancce – fachada" src="./assets/images/carrossel-3.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 10s infinite;">
+          <img alt="Casa de madeira nobre Confiancce entregue" src="./assets/images/carrossel-4.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 15s infinite;">
+          <img alt="Casa de madeira Confiancce – projeto no RS" src="./assets/images/carrossel-5.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 20s infinite;">
+          <img alt="Casa pré-fabricada de madeira Confiancce – acabamento" src="./assets/images/carrossel-6.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 25s infinite;">
         </div>
         <style>
           @keyframes zoomAndFade {
@@ -193,12 +538,12 @@ header #menu-toggle { margin-left: 0; }
     </div>
   <div style="width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; background: #000; box-shadow: 0 8px 24px rgba(69, 67, 77, 0.15); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
     <div id="carousel-container-mobile" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-      <img src="./carrossel-1.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1; animation: zoomAndFade 30s infinite;">
-      <img src="./carrossel-2.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 5s infinite;">
-      <img src="./carrossel-3.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 10s infinite;">
-      <img src="./carrossel-4.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 15s infinite;">
-      <img src="./carrossel-5.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 20s infinite;">
-      <img src="./carrossel-6.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 25s infinite;">
+      <img alt="Casa de madeira pré-fabricada Confiancce com varanda" src="./assets/images/carrossel-1.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1; animation: zoomAndFade 30s infinite;">
+      <img alt="Casa de madeira Confiancce – vista externa" src="./assets/images/carrossel-2.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 5s infinite;">
+      <img alt="Casa pré-fabricada de madeira Confiancce – fachada" src="./assets/images/carrossel-3.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 10s infinite;">
+      <img alt="Casa de madeira nobre Confiancce entregue" src="./assets/images/carrossel-4.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 15s infinite;">
+      <img alt="Casa de madeira Confiancce – projeto no RS" src="./assets/images/carrossel-5.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 20s infinite;">
+      <img alt="Casa pré-fabricada de madeira Confiancce – acabamento" src="./assets/images/carrossel-6.webp" class="carousel-img" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: zoomAndFade 30s 25s infinite;">
     </div>
   </div>
   <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -229,7 +574,7 @@ header #menu-toggle { margin-left: 0; }
     
     <!-- MODELO 1: Casa Essencial -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./araucaria.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Araucária, 42 m², 2 quartos" src="./assets/images/opt/araucaria-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Araucária</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Compacta e prática. Projeto funcional para começar.</p>
@@ -253,7 +598,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 2: Casa Aconchego -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./cambara.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Cambará, 61,75 m², 2 quartos" src="./assets/images/opt/cambara-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Cambará</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Confortável e bem proporcionada. Perfeita para famílias.</p>
@@ -277,7 +622,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 3: Casa Família -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./canela.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Canela, 73 m², 2 quartos" src="./assets/images/opt/canela-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Canela</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Espaçosa e aconchegante. Ideal para quem quer conforto.</p>
@@ -301,7 +646,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 4: Casa Requinte -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./paineira.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Paineira, 85 m², 3 quartos" src="./assets/images/opt/paineira-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Paineira</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Espaçosa e confortável. Para famílias maiores.</p>
@@ -325,7 +670,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 5: Casa Freijó -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./freijo.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Freijó, 102,5 m², 2 quartos" src="./assets/images/opt/freijo-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Freijó</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Elegante e sofisticada em madeira nobre. Conforto e estilo para sua família.</p>
@@ -349,7 +694,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 6: Casa Grápia -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./grapia.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Grápia, 42,5 m², 2 quartos" src="./assets/images/opt/grapia-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Grápia</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Compacta e aconchegante. Perfeita para famílias que buscam estilo.</p>
@@ -373,7 +718,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 7: Placeholder -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./tauari.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Tauari, 86,5 m², 3 quartos" src="./assets/images/opt/tauari-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Tauari</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Generosa e confortável. Perfeita para famílias.</p>
@@ -397,7 +742,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 8: Marfim -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./marfim.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Marfim, 67,5 m², 2 quartos" src="./assets/images/opt/marfim-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Marfim</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Moderna e funcional. Dois banheiros para maior comodidade.</p>
@@ -421,7 +766,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 9: Cedro -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./cedro.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Cedro, 79,75 m², 3 quartos" src="./assets/images/opt/cedro-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Cedro</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Espaçosa com 3 quartos. Aconchego para a família.</p>
@@ -445,7 +790,7 @@ header #menu-toggle { margin-left: 0; }
 
     <!-- MODELO 10: Alecrim -->
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./alecrim.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira pré-fabricada modelo Alecrim, 56,25 m², 2 quartos" src="./assets/images/opt/alecrim-1200.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Alecrim</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Compacta e prática. Ideal para quem quer eficiência.</p>
@@ -545,7 +890,7 @@ header #menu-toggle { margin-left: 0; }
       }
     </style>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./Arroio dos Ratos, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira entregue pela Confiancce em Arroio dos Ratos, RS" src="./assets/images/Arroio dos Ratos, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Arroio dos Ratos</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
@@ -553,7 +898,7 @@ header #menu-toggle { margin-left: 0; }
       </div>
     </div>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./Gramado, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira entregue pela Confiancce em Gramado, RS" src="./assets/images/Gramado, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Gramado</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
@@ -561,7 +906,7 @@ header #menu-toggle { margin-left: 0; }
       </div>
     </div>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./Triunfo, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira entregue pela Confiancce em Triunfo, RS" src="./assets/images/Triunfo, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Triunfo</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
@@ -569,7 +914,7 @@ header #menu-toggle { margin-left: 0; }
       </div>
     </div>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./Paulo Bento, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira entregue pela Confiancce em Paulo Bento, RS" src="./assets/images/Paulo Bento, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Paulo Bento</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
@@ -577,7 +922,7 @@ header #menu-toggle { margin-left: 0; }
       </div>
     </div>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./Quilombo, SC.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira entregue pela Confiancce em Quilombo, SC" src="./assets/images/Quilombo, SC.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Quilombo</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
@@ -585,7 +930,7 @@ header #menu-toggle { margin-left: 0; }
       </div>
     </div>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: grid; grid-template-columns: 1fr; gap: 0;">
-      <img src="./Taquara, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
+      <img loading="lazy" decoding="async" alt="Casa de madeira entregue pela Confiancce em Taquara, RS" src="./assets/images/Taquara, RS.webp" style="width: 100%; height: 200px; object-fit: cover;">
       <div style="padding: 24px;">
         <h3 style="font-size: 24px; font-weight: 700; color: #2D5016; margin-bottom: 12px;">Taquara</h3>
         <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Projeto residencial em madeira com acabamento sofisticado.</p>
@@ -703,7 +1048,7 @@ header #menu-toggle { margin-left: 0; }
       }
     </style>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: flex; flex-direction: column;">
-      <img src="./card1.webp" style="width: 100%; height: auto; display: block;" alt="Histórias em Madeira" />
+      <img loading="lazy" decoding="async" src="./assets/images/card1.webp" style="width: 100%; height: auto; display: block;" alt="Histórias em Madeira" />
       <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
         <h3 style="font-size: 16px; font-weight: 700; color: #2D5016; margin: 0; line-height: 1.3;">Histórias em Madeira</h3>
         <p style="font-size: 13px; color: #666; line-height: 1.5; margin: 0;">Famílias constroem histórias em casas de madeira. Seu sonho começa aqui!</p>
@@ -711,7 +1056,7 @@ header #menu-toggle { margin-left: 0; }
       </div>
     </div>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: flex; flex-direction: column;">
-      <img src="./card2.webp" style="width: 100%; height: auto; display: block;" alt="O Aconchego da Madeira" />
+      <img loading="lazy" decoding="async" src="./assets/images/card2.webp" style="width: 100%; height: auto; display: block;" alt="O Aconchego da Madeira" />
       <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
         <h3 style="font-size: 16px; font-weight: 700; color: #2D5016; margin: 0; line-height: 1.3;">O Aconchego da Madeira</h3>
         <p style="font-size: 13px; color: #666; line-height: 1.5; margin: 0;">A madeira nobre transforma espaços em lares. Sinta o aconchego do ambiente.</p>
@@ -719,7 +1064,7 @@ header #menu-toggle { margin-left: 0; }
       </div>
     </div>
     <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(69, 67, 77, 0.15); display: flex; flex-direction: column;">
-      <img src="./card3.webp" style="width: 100%; height: auto; display: block;" alt="Madeira Nobre em Ação" />
+      <img loading="lazy" decoding="async" src="./assets/images/card3.webp" style="width: 100%; height: auto; display: block;" alt="Madeira Nobre em Ação" />
       <div style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
         <h3 style="font-size: 16px; font-weight: 700; color: #2D5016; margin: 0; line-height: 1.3;">Madeira Nobre em Ação</h3>
         <p style="font-size: 13px; color: #666; line-height: 1.5; margin: 0;">Projeto em Paulo Bento/RS: madeira nobre que vai além da beleza arquitetônica.</p>
@@ -812,7 +1157,7 @@ header #menu-toggle { margin-left: 0; }
   <div style="display: flex; flex-direction: column; gap: 32px; width: 100%; max-width: 1200px; margin: 0 auto;">
     <!-- Logo & Descrição -->
     <div style="display: flex; align-items: flex-start; gap: 12px;">
-      <img src="./logo-confiancce-vazado-full.png" style="height: 40px; width: auto; flex-shrink: 0;">
+      <img loading="lazy" decoding="async" alt="Logo Confiancce Casas de Madeira" src="./assets/images/logo-confiancce-vazado-full.png" style="height: 40px; width: auto; flex-shrink: 0;">
       <div style="flex: 1;">
         <div style="font-weight: 700; font-size: 18px; color: #F2F2F2; margin-bottom: 4px;">Confiancce</div>
         <div style="font-size: 11px; color: #8A9A7F; letter-spacing: 0.5px; margin-bottom: 8px;">CASAS DE MADEIRA</div>
@@ -846,7 +1191,7 @@ header #menu-toggle { margin-left: 0; }
     <!-- Linha divisória inferior -->
     <div style="height: 1px; background: rgba(255, 255, 255, 0.1); width: 100%;"></div>
     <!-- Copyright -->
-    <div style="font-size: 12px; color: #7A8A7F; text-align: center; padding-top: 16px;">© 2026 Confiancce. Todos os direitos reservados.</div>
+    <div style="font-size: 12px; color: #7A8A7F; text-align: center; padding-top: 16px;">© 2026 Confiancce. Todos os direitos reservados. · <a href="./politica-de-privacidade.html" style="color: #C9CFC5; text-decoration: underline;">Política de Privacidade</a></div>
   </div>
 
   <style>

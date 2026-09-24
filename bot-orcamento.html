@@ -354,6 +354,31 @@
         line-height: 1.6;
       }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZQ6SJ0545"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5ZQ6SJ0545');
+      (function () {
+        var iniciou = false;
+        document.addEventListener('click', function (e) {
+          try {
+            var el = e.target.closest && e.target.closest('[onclick]');
+            if (!el) return;
+            var oc = el.getAttribute('onclick') || '';
+            var modelo = new URLSearchParams(location.search).get('modelo') || '';
+            if (!iniciou && oc.indexOf('selecionarTerreno(') !== -1) {
+              iniciou = true;
+              gtag('event', 'orcamento_inicio', { modelo: modelo });
+            } else if (oc.indexOf('enviarWhatsApp(') !== -1) {
+              gtag('event', 'orcamento_concluido', { modelo: modelo, transport_type: 'beacon' });
+            }
+          } catch (err) {}
+        }, true);
+      })();
+    </script>
   </head>
   <body>
     <div class="modal-overlay">
@@ -670,6 +695,11 @@
               placeholder="(XX) XXXXX-XXXX"
               onkeypress="verificarEnter(event, 'q8')"
             />
+            <label for="lgpd-consent" style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: #45434d; margin-bottom: 8px; cursor: pointer;">
+              <input type="checkbox" id="lgpd-consent" style="width: 18px; height: 18px; margin: 1px 0 0; flex-shrink: 0; accent-color: #2d5016; cursor: pointer;" onchange="document.getElementById('lgpd-erro').style.display='none'" />
+              <span>Li e concordo com a <a href="./politica-de-privacidade.html" target="_blank" style="color: #2d5016; font-weight: 700;">Política de Privacidade</a>. Meus dados serão usados apenas para o contato sobre o orçamento.</span>
+            </label>
+            <div id="lgpd-erro" style="display: none; font-size: 12px; color: #b3261e; margin-bottom: 12px;">Para continuar, marque que concorda com a Política de Privacidade.</div>
             <div class="button-group">
               <button
                 class="btn-secondary"
@@ -1195,6 +1225,10 @@
         if (idPergunta === "q8") {
           const whatsapp = document.getElementById("whatsapp").value.trim();
           if (whatsapp === "") return false;
+          if (!document.getElementById("lgpd-consent").checked) {
+            document.getElementById("lgpd-erro").style.display = "block";
+            return false;
+          }
           dados.whatsapp = whatsapp;
           return true;
         }

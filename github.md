@@ -1,11 +1,18 @@
-repo: lifersonskrzek/confiancce
+repo: lifersonskrzek/casasconfiancce
 branch: main
-path: src
 
 ## Last sync
-date: 2026-08-26T20:07:05Z
+date: 2026-09-24T01:51:43Z
 
 ### Updated in this project
-- Copied main files to project: `index.dc.html`, `support.js`, `bot-orcamento.html`
-- Configured GitHub Actions deploy workflow to auto-copy `.dc.html` → `.html` on push
-- Ready for live development with real-time preview
+- Correções de SEO técnico (head estático, JSON-LD, ALT, robots, sitemap)
+- Eventos GA4, política de privacidade e consentimento LGPD no chatbot
+- React/Babel servidos localmente (sem unpkg); imagens dos modelos otimizadas
+- Workflow de deploy quebrado removido (Pages publica direto da main)
+
+## Screen map
+| Tela | Arquivos |
+|---|---|
+| Home | index.html, assets/ |
+| Orçamento (chatbot) | bot-orcamento.html |
+| Política de Privacidade | politica-de-privacidade.html |
